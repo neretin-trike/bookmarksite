@@ -7,6 +7,8 @@ import store from '../store';
 class App extends Component {
 
   render() {
+    let hello: string = "hello world";
+    
     return (
       <Provider store={store}>
       </Provider>

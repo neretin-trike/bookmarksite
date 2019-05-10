@@ -1,6 +1,6 @@
-## ToDo
+## Сайт Закладок
 
-Классический менеджер задач, в виде web-приложения, написанное на ReactJS + Redux и созданное с помощью [Create React App](https://github.com/facebook/create-react-app).
+Тестовое задание от ЦФТ, в виде web-приложения, написанное на ReactJS + Redux и созданное с помощью [Create React App](https://github.com/facebook/create-react-app).
 
 Основные возможности:
 
@@ -19,4 +19,4 @@
 Страница пезегразутися, если вы сохраните изменения. <br>
 В случае ошибки линтер отправит уведомление в консоль.
 
-![](https://github.com/neretin-trike/todo/blob/master/screenshot.PNG)
+

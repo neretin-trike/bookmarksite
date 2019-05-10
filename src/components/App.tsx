@@ -1,8 +1,11 @@
-import React, { Component} from 'react';
+import React from 'react';
 import './App.css';
 
 import { Provider } from 'react-redux';
 import store from '../store';
+
+import bookMarks from '../data/bookMarks';
+import tags from '../data/tags';
 
 const Button: React.StatelessComponent<any> = function (props) {
   return (
@@ -41,17 +44,17 @@ const Header: React.StatelessComponent<any> = function (props) {
 
 const SearchBar: React.StatelessComponent<any> = function (props) {
   return (
-    <div>
+    <section>
       <input placeholder="Введите название или тег"/>
       <img alt="поиск"></img>
-    </div>
+    </section>
   )
 }
 
 const Favicon: React.StatelessComponent<any> = function (props) {
   return (
     <figure>
-      <img alt="иконка сайта"></img>
+      <img src={props.path} alt="иконка сайта"></img>
     </figure>
   )
 }
@@ -93,57 +96,60 @@ const Interact: React.StatelessComponent<any> = function (props) {
 const TagItem: React.StatelessComponent<any> = function (props) {
   return (
     <div>
-      <span>{props.name}</span>
+      <span style={{color: `${props.color}`}}>{props.name}</span>
       <button>x</button>
     </div>
   )
 }
 
 const TagArray: React.StatelessComponent<any> = function (props) {
+  let array = props.array;
   return (
     <div>
-      <TagItem name="Тег1"/>
-      <TagItem name="Тег2"/>
-      <TagItem name="Тег3"/>
-      <TagItem name="Тег4"/>
-      <TagItem name="Тег5"/>
+      {array.map( (item: number, index: number) => {
+        return <TagItem key = {index} name={tags[item].name} color={tags[item].color}/>
+      })}
     </div>
   )
 }
 
 const MoreInfo: React.StatelessComponent<any> = function (props) {
+  let {url, createDate, tagArray} = props.data; 
   return (
     <section>
-      <div>http://</div>
-      <time>20:20 03.02.2018</time>
-      <TagArray />
+      <div>{url}</div>
+      <time>{createDate}</time>
+      <TagArray array = {tagArray}/>
     </section>
   )
 }
 
 const BookmarkItem: React.StatelessComponent<any> = function (props) {
+
+  let {faviconPath, caption, url, createDate, tagArray} = props.data;
+  let moreInfoData: object = { url, createDate, tagArray };
+
   return (
     <div>
-      <Favicon />
-      <Caption />
+      <Favicon path = {faviconPath}/>
+      <Caption caption = {caption}/>
       <Interact>
         <DeleteButton />
         <EditButton />
         <ToogleButton />
       </Interact>
-      <MoreInfo />
+      <MoreInfo data = {moreInfoData}/>
     </div>
   )
 }
 
 const BookmarkList: React.StatelessComponent<any> = function (props) {
   return (
-    <div>
-      <BookmarkItem />
-      <BookmarkItem />
-      <BookmarkItem />
-      <BookmarkItem />
-    </div>
+    <section>
+      {bookMarks.map( (item: object, index: number) => {
+        return <BookmarkItem key={index} data = {item} />
+      })}
+    </section>
   )
 }
 
@@ -222,7 +228,7 @@ const App: React.StatelessComponent<any> = () => (
   <Provider store={store}>
     <Header />
     <Main />
-    <ModalWindow />
+    {/* <ModalWindow /> */}
   </Provider>
 );
 

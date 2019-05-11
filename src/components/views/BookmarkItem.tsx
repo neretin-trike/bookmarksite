@@ -15,7 +15,8 @@ interface IProps {
         url: string, 
         createDate: string,
         tagArray: Array<any>
-    }
+    },
+    id: number
 }
 
 class BookmarkItem extends React.PureComponent<IProps> {
@@ -29,7 +30,7 @@ class BookmarkItem extends React.PureComponent<IProps> {
                 <Favicon path = {faviconPath}/>
                 <Caption caption = {caption}/>
                 <InteractLayout>
-                    <DeleteButtonContainer />
+                    <DeleteButtonContainer id={this.props.id}/>
                     <EditButtonContainer />
                     <ToggleButtonContainer />
                 </InteractLayout>

@@ -11,7 +11,7 @@ class BookMarkList extends React.PureComponent<IProps> {
         return (
             <section>
               {this.props.bookMarks.map( (item: object, index: number) => {
-                return <BookmarkItemContainer key={index} item={item} />
+                return <BookmarkItemContainer key={index} id={index} item={item} />
               })}
             </section>
           )

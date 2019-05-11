@@ -1,15 +1,22 @@
 import React from 'react';
+import { connect } from "react-redux";
 
 import TagsArray from '../views/TagsArray';
-import tags from '../../data/tags';
 
 class TagsArrayContainer extends React.Component<any> {
     render() {
         return (
-            <TagsArray array={this.props.array} tags={tags} />
+            <TagsArray array={this.props.array} tags={this.props.tags} />
         )
     }
-
 }
 
-export default TagsArrayContainer;
+interface IStateProps {
+    tags: Array<any>,
+}
+function mapStateToProps(state) {
+    return {
+        tags: state.tags as Array<any>,
+    };
+}
+export default connect<IStateProps>(mapStateToProps)(TagsArrayContainer);

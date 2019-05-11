@@ -2,7 +2,7 @@ import React from 'react';
 import TagItemContainer from '../containers/TagItemContainer';
 
 interface IProps {
-    array: [],
+    array: Array<any>,
     tags: Array<any>
 }
 

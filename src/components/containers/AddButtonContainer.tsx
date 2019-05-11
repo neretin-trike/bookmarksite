@@ -5,11 +5,8 @@ import Button from '../views/Button';
 import { doAddBookmark } from '../../actions/addBookmark';
 
 class AddButtonContainer extends React.Component<any> {
-  clickHandle = () => {
-    this.props.addBookmark();
-  }
   render() {
-    return <Button name="Добавить закладку" clickHandle={this.clickHandle}/>
+    return <Button name="Добавить закладку" clickHandle={this.props.addBookmark}/>
   }
 }
 

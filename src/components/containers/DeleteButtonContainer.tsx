@@ -5,16 +5,13 @@ import Button from '../views/Button';
 import { doDeleteBookmark } from '../../actions/deleteBookmark';
 
 class DeleteButtonContainer extends React.Component<any> {
-  clickHandle = () => {
-    this.props.deleteBookmark(this.props.id);
-  }
   render() {
-    return <Button name="удалить" clickHandle={this.clickHandle}/>
+    return <Button name="удалить" clickHandle={() => this.props.deleteBookmark(this.props.id)}/>
   }
 }
 
 interface IDispatchProps {
-  deleteBookmark(any)
+  deleteBookmark(id: number)
 }
 
 const mapDispatchToProps = function(dispatch, _ownProps) {

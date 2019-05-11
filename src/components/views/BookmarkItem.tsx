@@ -27,14 +27,14 @@ class BookmarkItem extends React.PureComponent<IProps> {
 
         return (
             <div>
-                <Favicon path = {faviconPath}/>
-                <Caption caption = {caption}/>
+                <Favicon path={faviconPath}/>
+                <Caption caption={caption}/>
                 <InteractLayout>
                     <DeleteButtonContainer id={this.props.id}/>
                     <EditButtonContainer />
                     <ToggleButtonContainer />
                 </InteractLayout>
-                <MoreInfo data = {moreInfoData}/>
+                <MoreInfo data={moreInfoData}/>
             </div>
         )
     }

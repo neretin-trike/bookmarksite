@@ -13,8 +13,11 @@ interface IStateProps {
     bookMarks: Array<any>,
 }
 function mapStateToProps(state) {
+    const {bookMarks, searchFieldValue} = state;
     return {
-        bookMarks: state.bookMarks as Array<any>,
+        bookMarks: bookMarks.filter( (item) => {
+            return item.caption.includes(searchFieldValue)
+        }) as Array<any>,
     };
 }
 

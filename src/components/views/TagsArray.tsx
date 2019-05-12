@@ -11,7 +11,7 @@ class TagsArray extends React.PureComponent<IProps> {
         let {array, tags} = this.props;
         return (
             <div>
-                {array.map( (item: number, index: number) => {
+                {array && array.map( (item: number, index: number) => {
                     return <TagItemContainer key={index} tag={tags[item]}/>
                 })}
             </div>

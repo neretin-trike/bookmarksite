@@ -3,9 +3,10 @@ import ModalWindow from '../views/ModalWindow';
 
 class ModalWindowContainer extends React.Component<any> {
   render() {
-    let isShow = false;
+    let isShow = true;
+
     return (
-        <ModalWindow isModalWindowShow={isShow}  />
+        <ModalWindow isModalWindowShow={isShow} />
     )
   }
 }

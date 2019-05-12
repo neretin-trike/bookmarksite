@@ -16,11 +16,11 @@ const initialState = {
     tags,
     searchFieldValue: "",
     addFormValues: {
-        caption: "1",
-        url: "2",
-        tag: "3",
+        caption: "",
+        url: "",
+        tag: "",
     },
-    tagsAddForm: [0,1,2]
+    tagsAddForm: Array(0)
 }
 
 const reducer = function(state = initialState, action) {
@@ -65,8 +65,7 @@ const reducer = function(state = initialState, action) {
         if (id === -1) {
             id = state.tags.length-1;
         }
-        console.log(items);
-        console.log(items.length);
+
         items.push(id);
 
         return {...state,

@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from "react-redux";
 
 import Button from '../views/Button';
-import { doAddBookmark } from '../../actions/addBookmark';
+import { doSaveBookmark } from '../../actions/saveBookmark';
+import { doSetModalWindowState } from '../../actions/setModalWindowState';
 
 class SaveButtonContainer extends React.Component<any> {
   render() {
-    return <Button name="Сохранить" clickHandle={()=>this.props.addBookmark(this.props.addFormValues, this.props.tagsAddForm)}/>
+    return <Button name="Сохранить" clickHandle={()=>this.props.saveBookmark(this.props.addFormValues, this.props.tagsAddForm)}/>
   }
 }
 
@@ -15,7 +16,7 @@ interface IStateProps {
   tagsAddForm: Array<number>
 }
 interface IDispatchProps {
-  addBookmark(formValues, tagsArray)
+  saveBookmark(formValues, tagsArray)
 }
 
 function mapStateToProps(state) {
@@ -27,7 +28,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
-    addBookmark: function (formValues, tagsArray) {
+    saveBookmark: function (formValues, tagsArray) {
 
       let newBookmark = {
         faviconPath: "http://...",
@@ -37,7 +38,11 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
         tagArray: tagsArray
       }
 
-      dispatch(doAddBookmark(newBookmark));
+      dispatch(doSaveBookmark(newBookmark));
+      dispatch(doSetModalWindowState({
+        addFormTitle: "",
+        isModalWindowShow: false
+      }));
     }
   }
 }

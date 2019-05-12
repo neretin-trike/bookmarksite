@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Button from '../views/Button';
 import { doAddBookmark } from '../../actions/addBookmark';
+import { doSetModalWindowState } from '../../actions/setModalWindowState';
 
 class AddButtonContainer extends React.Component<any> {
   render() {
@@ -16,16 +17,11 @@ interface IDispatchProps {
 const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
     addBookmark: function () {
-
-      let newBookmark = {
-        faviconPath: "http://...",
-        caption: "например новая закладка",
-        url: "https://google.com",
-        createDate: "20.01.2018 15:48",
-        tagArray: [0, 1 ,2, 3, 4, 5]
-      }
-
-      dispatch(doAddBookmark(newBookmark));
+      dispatch(doAddBookmark({}));
+      dispatch(doSetModalWindowState({
+        addFormTitle: "Добавление новой записи",
+        isModalWindowShow: true
+      }));
     }
   }
 }

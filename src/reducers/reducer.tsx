@@ -11,12 +11,17 @@ import { ADD_TAG } from "../actions/addTag";
 import { DELETE_TAG } from '../actions/deleteTag';
 import { ADD_NEW_TAG } from '../actions/addNewTag';
 import { EDIT_BOOKMARK } from '../actions/editBookmark';
+import { SET_MODALWINDOW_STATE } from '../actions/setModalWindowState';
+import { SAVE_BOOKMARK } from '../actions/saveBookmark';
 
 const initialState = {
     bookMarks,
     tags,
     searchFieldValue: "",
+    isModalWindowShow: false,
+    addFormTitle: "Добавление новой закладки",
     addFormValues: {
+        id: null,
         caption: "",
         url: "",
         tag: "",
@@ -27,10 +32,42 @@ const initialState = {
 const reducer = function(state = initialState, action) {
   switch (action.type) {
     case ADD_BOOKMARK: {
+        let newAddFormValues = {
+            id: null,
+            caption: "", 
+            url: "", 
+            tag: ""
+        };
+        let newTagsAddForm = []; 
+
+        return {...state,
+            addFormValues: newAddFormValues,
+            tagsAddForm: newTagsAddForm
+        };
+    }
+    case EDIT_BOOKMARK: {
+        let {id} = action.payload;
+        let {caption, url, tagArray} = state.bookMarks[id];
+
+        let newAddFormValues = {id, caption, url, tag: "" };
+        let newTagsAddForm = tagArray;
+
+        return {...state,
+            addFormValues: newAddFormValues,
+            tagsAddForm: newTagsAddForm
+        };
+    }
+    case SAVE_BOOKMARK: {
         let newBookmark = action.payload;
         let items = [...state.bookMarks];
-        items.unshift(newBookmark);
 
+        let currentID = state.addFormValues.id; // ToDo: придумать способ получше
+        if (currentID === null) {
+            items.unshift(newBookmark);
+        } else {
+            items[currentID] = newBookmark
+        }
+        
         return {...state,
             bookMarks: items
         };
@@ -42,20 +79,6 @@ const reducer = function(state = initialState, action) {
 
         return {...state,
             bookMarks: items
-        };
-    }
-    case EDIT_BOOKMARK: {
-
-        let {id} = action.payload;
-
-        let {caption, url, tagArray} = state.bookMarks[id];
-
-        let newAddFormValues = { caption, url, tag: "" };
-        let newTagsAddForm = tagArray;
-
-        return {...state,
-            addFormValues: newAddFormValues,
-            tagsAddForm: newTagsAddForm
         };
     }
     case SEARCH_BOOKMARK: {
@@ -103,6 +126,14 @@ const reducer = function(state = initialState, action) {
 
         return {...state,
             tags: items
+        };
+    }
+    case SET_MODALWINDOW_STATE: {
+        let {isModalWindowShow, addFormTitle} = action.payload;
+
+        return {...state,
+            isModalWindowShow,
+            addFormTitle
         };
     }
   }

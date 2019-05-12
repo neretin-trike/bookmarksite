@@ -7,6 +7,8 @@ import DeleteButtonContainer from '../containers/DeleteButtonContainer';
 import EditButtonContainer from '../containers/EditButtonContainer';
 import ToggleButtonContainer from '../containers/ToggleButtonContainer';
 
+import '../../styles/bookmark-item.css'
+
 interface IProps {
     item: {
         faviconPath: string, 
@@ -25,12 +27,12 @@ class BookmarkItem extends React.PureComponent<IProps> {
         let moreInfoData: object = { url, createDate, tagArray };
 
         return (
-            <div>
+            <div className="bookmark-item">
                 <Favicon path={faviconPath}/>
-                <Caption caption={caption}/>
-                <InteractLayout>
-                    <DeleteButtonContainer id={this.props.id}/>
-                    <EditButtonContainer id={this.props.id}/>
+                <Caption url={url} caption={caption}/>
+                <InteractLayout class="bookmark-item__interact">
+                    <DeleteButtonContainer id={this.props.id}/> |
+                    <EditButtonContainer id={this.props.id}/> |
                     <ToggleButtonContainer data={moreInfoData}/>
                 </InteractLayout>
             </div>

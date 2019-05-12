@@ -2,7 +2,7 @@ import React from 'react';
 
 const InteractLayout: React.FunctionComponent<any> = function (props) {
     return (
-      <section>
+      <section className={props.class}>
         {props.children}
       </section>
     )

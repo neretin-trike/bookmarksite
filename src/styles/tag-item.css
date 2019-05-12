@@ -1,0 +1,12 @@
+.tag-item {
+    cursor: default;
+    padding: 0.5rem 1rem;
+    border-radius: 4.5rem;
+    
+    margin-right: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag-item__name {
+    color: var(--font-color-primary);
+}

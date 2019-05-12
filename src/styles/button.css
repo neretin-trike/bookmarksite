@@ -16,3 +16,12 @@
 .header-layout__button {
     margin-left: auto;
 }
+
+.button_theme_interact {
+    font-size: 1.8rem;
+    color: var(--font-color-varian1);
+}
+
+.button_theme_interact:hover {
+  color: var(--main-color);
+}

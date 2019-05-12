@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../styles/tag-item.css'
+
 interface IProps {
     clickHandle(): void,
     color: string,
@@ -10,8 +12,8 @@ interface IProps {
 class TagItem extends React.PureComponent<IProps> {
     render() {
         return (
-            <div>
-                <span style={{color: `${this.props.color}`}}>{this.props.name}</span>
+            <div style={{background: `${this.props.color}`}} className="tag-item">
+                <span className="tag-item__name">{this.props.name}</span>
                 {this.props.readonly || <button onClick={this.props.clickHandle}>x</button>}
             </div>
         )

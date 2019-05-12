@@ -10,7 +10,7 @@ class EditButtonContainer extends React.Component<any> {
     alert();
   }
   render() {
-    return <Button name="редактировать" clickHandle={() => this.props.editBookmark(this.props.id)}/>
+    return <Button theme="button_theme_interact" name="редактировать" clickHandle={() => this.props.editBookmark(this.props.id)}/>
   }
 }
 

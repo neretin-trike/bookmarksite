@@ -1,0 +1,4 @@
+.tags-array {
+    display: flex;
+    flex-wrap: wrap;
+}

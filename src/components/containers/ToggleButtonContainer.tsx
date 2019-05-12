@@ -5,7 +5,7 @@ import MoreInfo from '../views/MoreInfo';
 
 const ToggleButtonContainer: React.FunctionComponent<any> = function (props) {
 
-  const condition = ["закрыть","подробнее"];
+  const condition = ["скрыть","подробнее"];
 
   const [isShow, setShow] = useState(0);
   const [name, setName] = useState(condition[1]);
@@ -17,7 +17,7 @@ const ToggleButtonContainer: React.FunctionComponent<any> = function (props) {
 
   return (
     <React.Fragment>
-      <Button name={name} clickHandle={(clickHandle)}/>
+      <Button theme="button_theme_interact" name={name} clickHandle={(clickHandle)}/>
       {!!isShow && <MoreInfo data={props.data}/>}
     </React.Fragment> 
   )

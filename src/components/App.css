@@ -57,8 +57,10 @@
   --main-color: #c91450;
 
   --font-color-primary: white;
-
   --font-color-secondary: #3f3746;
+  
+  --font-color-varian1: #664455;
+  --font-color-varian2: #60505d;
 }
 
 /*-------------------------------
@@ -77,8 +79,8 @@ body {
   font-family: "Roboto";
   color: var(--font-color-primary);
 
-  background: #EED4FD;
-  background-image: linear-gradient(-65deg, var(--secondary-color) 25%, 
+  background:  var(--secondary-color);
+  background: linear-gradient(-65deg, var(--secondary-color) 25%, 
                                             var(--primary-color) 75%);
 }
 

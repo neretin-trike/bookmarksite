@@ -6,7 +6,7 @@ import { doDeleteBookmark } from '../../actions/deleteBookmark';
 
 class DeleteButtonContainer extends React.Component<any> {
   render() {
-    return <Button name="удалить" clickHandle={() => this.props.deleteBookmark(this.props.id)}/>
+    return <Button theme="button_theme_interact" name="удалить" clickHandle={() => this.props.deleteBookmark(this.props.id)}/>
   }
 }
 

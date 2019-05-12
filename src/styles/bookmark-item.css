@@ -1,0 +1,38 @@
+.bookmark-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    font-size: 1.8rem;
+    padding: 3rem;
+
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.1);
+}
+
+.bookmark-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.bookmark-item__favicon {
+    margin: 0;
+    background: var(--font-color-primary);
+    border: 0.2rem solid var(--font-color-primary);
+
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.bookmark-item__img {
+    height: 3.4rem;
+    width: 3.4rem;
+    object-fit: cover;
+}
+
+.bookmark-item__link {
+    padding-left: 3rem; 
+}
+
+.bookmark-item__interact {
+    color: var(--font-color-varian1);
+    margin-left: auto;
+}

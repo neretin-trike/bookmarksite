@@ -1,25 +1,44 @@
 import React from 'react';
+import { connect } from "react-redux";
+
 import TagItem from '../views/TagItem';
+import { doDeleteTag } from '../../actions/deleteTag';
 
 interface IProps {
     tag: {
         name: string,
         color: string,
-    }
+    },
+    id: number,
+    readonly: boolean,
+    deleteTag(id): void,
 }
 
 class TagItemContainer extends React.Component<IProps> {
-  constructor(props) {
-      super(props);
-
-      this.clickHandle = this.clickHandle.bind(this);
-  }
-  clickHandle() {
-    alert( Object.entries(this.props.tag));
-  }
   render() {
-    return <TagItem name={this.props.tag.name} color={this.props.tag.color} clickHandle={this.clickHandle}/>
+    return <TagItem name={this.props.tag.name} readonly={this.props.readonly} color={this.props.tag.color} clickHandle={()=>this.props.deleteTag(this.props.id)}/>
   }
 }
 
-export default TagItemContainer;
+interface IStateProps {
+  tagsAddForm: Array<number>
+}
+function mapStateToProps(state) {
+  return {
+      tagsAddForm: state.tagsAddForm as Array<number>
+  };
+}
+
+interface IDispatchProps {
+  deleteTag(id),
+}
+
+const mapDispatchToProps = function(dispatch, _ownProps) {
+  return {
+    deleteTag: function (id) {
+      dispatch(doDeleteTag({id}));
+    },
+  }
+}
+
+export default connect<IStateProps,IDispatchProps>(mapStateToProps,mapDispatchToProps)(TagItemContainer);

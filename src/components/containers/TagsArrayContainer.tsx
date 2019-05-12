@@ -6,7 +6,7 @@ import TagsArray from '../views/TagsArray';
 class TagsArrayContainer extends React.Component<any> {
     render() {
         return (
-            <TagsArray array={this.props.array} tags={this.props.tags} />
+            <TagsArray array={this.props.array} readonly={true} tags={this.props.tags} />
         )
     }
 }

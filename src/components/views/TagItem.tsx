@@ -3,7 +3,8 @@ import React from 'react';
 interface IProps {
     clickHandle(): void,
     color: string,
-    name: string
+    name: string,
+    readonly: boolean
 }
 
 class TagItem extends React.PureComponent<IProps> {
@@ -11,7 +12,7 @@ class TagItem extends React.PureComponent<IProps> {
         return (
             <div>
                 <span style={{color: `${this.props.color}`}}>{this.props.name}</span>
-                <button onClick={this.props.clickHandle}>x</button>
+                {this.props.readonly || <button onClick={this.props.clickHandle}>x</button>}
             </div>
         )
     }

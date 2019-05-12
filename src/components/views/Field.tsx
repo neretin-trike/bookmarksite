@@ -10,10 +10,10 @@ interface IProps {
 class Field extends React.PureComponent<IProps> {
     render() {
         return (
-            <form>
+            <React.Fragment>
                 <input name={this.props.name} value={this.props.value} onChange={this.props.changeHandle} placeholder={this.props.placeholder}/>
                 {this.props.children}
-            </form>
+            </React.Fragment>
           )
     }
 } 

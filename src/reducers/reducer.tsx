@@ -7,6 +7,9 @@ import { ADD_BOOKMARK } from "../actions/addBookmark";
 import { DELETE_BOOKMARK } from "../actions/deleteBookmark";
 import { SEARCH_BOOKMARK } from "../actions/searchBookmark";
 import { CHANGE_ADDFORM_VALUE } from "../actions/changeAddFormValue";
+import { ADD_TAG } from "../actions/addTag";
+import { DELETE_TAG } from '../actions/deleteTag';
+import { ADD_NEW_TAG } from '../actions/addNewTag';
 
 const initialState = {
     bookMarks,
@@ -17,6 +20,7 @@ const initialState = {
         url: "2",
         tag: "3",
     },
+    tagsAddForm: [0,1,2]
 }
 
 const reducer = function(state = initialState, action) {
@@ -49,10 +53,43 @@ const reducer = function(state = initialState, action) {
         let items = {...state.addFormValues};
         let {value, name} = action.payload;
         items[name] = value;
-        
+
         return {...state, 
             addFormValues: items,
+        };
+    }
+    case ADD_TAG: {
+        let {id} = action.payload;
+        let items = [...state.tagsAddForm];
+
+        if (id === -1) {
+            id = state.tags.length-1;
         }
+        console.log(items);
+        console.log(items.length);
+        items.push(id);
+
+        return {...state,
+            tagsAddForm: items
+        };
+    }
+    case DELETE_TAG: {
+        let {id} = action.payload;
+        let items = [...state.tagsAddForm];
+        items.splice(id, 1);
+
+        return {...state,
+            tagsAddForm: items
+        };
+    }
+    case ADD_NEW_TAG: {
+        let newTag = action.payload;
+        let items = [...state.tags];
+        items.push(newTag);
+
+        return {...state,
+            tags: items
+        };
     }
   }
   return state;

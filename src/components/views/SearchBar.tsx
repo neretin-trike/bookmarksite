@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../styles/search-bar.css'
+
 interface IProps {
     changeHandle(): void,
     value: string
@@ -8,12 +10,13 @@ interface IProps {
 class ModalWindow extends React.PureComponent<IProps> {
     render() {
         return (
-            <section>
+            <section className="search-bar">
                 <input 
+                    className="search-bar__input"
                     onChange={this.props.changeHandle} 
                     value={this.props.value} 
                     placeholder="Введите название или тег"/>
-                <img alt="поиск"></img>
+                <img className="search-bar__img" src="images/search.svg" alt="поиск"></img>
             </section>
         )
     }

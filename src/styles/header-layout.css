@@ -1,4 +1,6 @@
 .header-layout {
     display: flex;
     align-items: center;
+
+    margin-top: 3.5rem;
 }

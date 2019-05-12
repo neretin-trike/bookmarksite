@@ -1,0 +1,29 @@
+.search-bar {
+    display: flex;
+    position: relative;
+    box-shadow: 0 0.5rem 5.5rem 0 rgba(0, 0, 0, 0.1); 
+
+    padding: 3.5rem 3rem;
+}
+
+.search-bar__input {
+    background-color: transparent;
+    border: none;
+    flex: 1;
+    font-size: 2.4rem;
+    caret-color: var(--font-color-primary);
+    color: var(--font-color-primary);
+}
+.search-bar__input::-webkit-input-placeholder {color: var(--font-color-secondary); font-family: "Roboto"; font-style: italic}
+.search-bar__input::-moz-placeholder          {color: var(--font-color-secondary); font-family: "Roboto"; font-style: italic}
+.search-bar__input:-moz-placeholder           {color: var(--font-color-secondary); font-family: "Roboto"; font-style: italic}
+.search-bar__input:-ms-input-placeholder      {color: var(--font-color-secondary); font-family: "Roboto"; font-style: italic}
+
+.search-bar__img {
+    position: absolute;
+    right: 2.5rem;
+    top: 3rem;
+
+    height: 4.4rem;
+    width: 4.4rem;
+}

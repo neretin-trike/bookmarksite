@@ -7,7 +7,7 @@ import { doSetModalWindowState } from '../../actions/setModalWindowState';
 
 class AddButtonContainer extends React.Component<any> {
   render() {
-    return <Button name="Добавить закладку" clickHandle={this.props.addBookmark}/>
+    return <Button theme="button_theme_add header-layout__button" name="Добавить закладку" clickHandle={this.props.addBookmark}/>
   }
 }
 

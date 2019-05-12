@@ -1,0 +1,17 @@
+.button {
+    background: transparent;
+    border: none;
+}
+
+.button_theme_add {
+    color: var(--main-color);
+    font-size: 2rem;
+
+    padding: 1.7rem 2.5rem;
+    border: 0.2rem solid var(--main-color);
+    border-radius: 4.5rem;
+}
+
+.header-layout__button {
+    margin-left: auto;
+}

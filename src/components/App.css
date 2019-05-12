@@ -1,9 +1,91 @@
-html, body, #root {
-  height: 100%;
-  /* background: var(--main-color); */
+/*-------------------------------
+------------- FONTS -------------
+-------------------------------*/
+
+@font-face {
+  font-family: 'WiGuru';
+  src: url('../fonts/WiGuru/WiGuru.eot');
+  src: url('../fonts/WiGuru/WiGuru.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/WiGuru/WiGuru.woff') format('woff'),
+       url('../fonts/WiGuru/WiGuru.woff2') format('woff2'),
+       url('../fonts/WiGuru/WiGuru.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
-* {
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Bold.eot');
+  src: url('../fonts/Roboto/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Roboto/Roboto-Bold.woff') format('woff'),
+       url('../fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
+       url('../fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto.eot');
+  src: url('../fonts/Roboto/Roboto.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Roboto/Roboto.woff') format('woff'),
+       url('../fonts/Roboto/Roboto.woff2') format('woff2'),
+       url('../fonts/Roboto/Roboto.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Italic.eot');
+  src: url('../fonts/Roboto/Roboto-Italic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Roboto/Roboto-Italic.woff') format('woff'),
+       url('../fonts/Roboto/Roboto-Italic.woff2') format('woff2'),
+       url('../fonts/Roboto/Roboto-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/*-------------------------------
+----------- VARIABLES -----------
+-------------------------------*/
+
+:root {
+  --primary-color: #201b2d;
+  --secondary-color: #3a1323;
+
+  --main-color: #c91450;
+  --font-color-dark: white;
+}
+
+/*-------------------------------
+-------- GENERAL STYLES ---------
+-------------------------------*/
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 3.5rem 7rem;
+
+  font-size: 1.4rem;
+  font-family: "Roboto";
+  color: var(--font-color-dark);
+
+  height: 100%;
+
+  background: #EED4FD;
+  background-image: linear-gradient(-65deg, var(--secondary-color) 25%, 
+                                            var(--primary-color) 75%);
+}
+
+*, *::after, *::before {
   box-sizing: border-box;
+
+  border: 1px solid yellow;
 }
 
 .container {
@@ -14,4 +96,5 @@ html, body, #root {
   overflow: hidden;
   position: relative;
 }
+
 

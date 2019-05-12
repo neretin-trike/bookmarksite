@@ -31,7 +31,7 @@ class BookmarkItem extends React.PureComponent<IProps> {
                 <Caption caption={caption}/>
                 <InteractLayout>
                     <DeleteButtonContainer id={this.props.id}/>
-                    <EditButtonContainer />
+                    <EditButtonContainer id={this.props.id}/>
                     <ToggleButtonContainer />
                 </InteractLayout>
                 <MoreInfo data={moreInfoData}/>

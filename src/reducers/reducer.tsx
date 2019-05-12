@@ -10,6 +10,7 @@ import { CHANGE_ADDFORM_VALUE } from "../actions/changeAddFormValue";
 import { ADD_TAG } from "../actions/addTag";
 import { DELETE_TAG } from '../actions/deleteTag';
 import { ADD_NEW_TAG } from '../actions/addNewTag';
+import { EDIT_BOOKMARK } from '../actions/editBookmark';
 
 const initialState = {
     bookMarks,
@@ -41,6 +42,20 @@ const reducer = function(state = initialState, action) {
 
         return {...state,
             bookMarks: items
+        };
+    }
+    case EDIT_BOOKMARK: {
+
+        let {id} = action.payload;
+
+        let {caption, url, tagArray} = state.bookMarks[id];
+
+        let newAddFormValues = { caption, url, tag: "" };
+        let newTagsAddForm = tagArray;
+
+        return {...state,
+            addFormValues: newAddFormValues,
+            tagsAddForm: newTagsAddForm
         };
     }
     case SEARCH_BOOKMARK: {

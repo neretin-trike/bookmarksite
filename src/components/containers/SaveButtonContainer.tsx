@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Button from '../views/Button';
 import { doSaveBookmark } from '../../actions/saveBookmark';
 import { doSetModalWindowState } from '../../actions/setModalWindowState';
+import { func } from 'prop-types';
 
 class SaveButtonContainer extends React.Component<any> {
   render() {
@@ -30,17 +31,33 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
     saveBookmark: function (formValues, tagsArray) {
 
+      function getFormattedDate() {
+
+        function format(value) {
+          return ('0' + value).slice(-2);
+        }
+
+        let dateObj = new Date();
+      
+        let time = `${format(dateObj.getHours())}:${format(dateObj.getMinutes())}`;
+        let date = `${format(dateObj.getDate())}.${format(dateObj.getMonth()+1)}.${format(dateObj.getFullYear())}`;
+      
+        return {time, date};
+      }
+
+      let {time, date} = getFormattedDate();
+      
       let newBookmark = {
         faviconPath: "http://...",
         caption: formValues.caption,
         url: formValues.url,
-        createDate: new Date().toString(),
+        createDate: `${time} ${date}`,
         tagArray: tagsArray
       }
 
       dispatch(doSaveBookmark(newBookmark));
       dispatch(doSetModalWindowState({
-        addFormTitle: "",
+        addFormTitle: "Редактировать запись",
         isModalWindowShow: false
       }));
     }

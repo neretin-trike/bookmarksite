@@ -7,7 +7,11 @@ import { doDeleteTag } from '../../actions/deleteTag';
 interface IProps {
     tag: {
         name: string,
-        color: string,
+        color: {
+          red: number,
+          green: number,
+          blue: number
+        },
     },
     id: number,
     readonly: boolean,
@@ -16,7 +20,15 @@ interface IProps {
 
 class TagItemContainer extends React.Component<IProps> {
   render() {
-    return <TagItem name={this.props.tag.name} readonly={this.props.readonly} color={this.props.tag.color} clickHandle={()=>this.props.deleteTag(this.props.id)}/>
+
+    let {red, green, blue} = this.props.tag.color;
+    let color = `rgb(${red},${green},${blue})`;
+
+    return <TagItem 
+      name={this.props.tag.name} 
+      readonly={this.props.readonly} 
+      color={color} 
+      clickHandle={()=>this.props.deleteTag(this.props.id)}/>
   }
 }
 

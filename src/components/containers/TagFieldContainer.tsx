@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from "react-redux";
+import  { connect } from "react-redux";
 
 import Field from '../views/Field';
 import TagsArray from '../views/TagsArray';
@@ -56,10 +56,48 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
       let tagName = tags.map(item => item.name);
       let id = tagName.indexOf(value);
 
+      function getRandomColor() {
+
+        function getRandomArbitrary(min, max) {
+          return Math.ceil(Math.random() * (max - min) + min);
+        }
+
+        let red = getRandomArbitrary(65,125);
+        let green = getRandomArbitrary(65,125);
+        let blue = getRandomArbitrary(65,125);
+
+        return {red, green, blue};;
+      }
+
+
+      let getColor = getRandomColor(); 
+      let flag = false;
+
+      while (flag === false) { // ToDo: поправить способ генерации уникальных цвето
+        getColor = getRandomColor();
+
+        flag = tags.every(item => {
+          let entryColor = Object.values(item.color).toString();
+          let newColor = Object.values(getColor).toString();
+
+          console.log("entryColor", entryColor);
+          console.log("newColor", newColor);
+  
+          if (entryColor === newColor) {
+            return false; 
+          } else {
+            return true;
+          }
+        });
+
+        console.log(flag);
+
+      }
+
       if (id === -1) {
         let newTag = {
           name: value,
-          color: "black"
+          color: getColor
         };
         dispatch(doAddNewTag(newTag));
       } 

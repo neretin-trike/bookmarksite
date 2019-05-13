@@ -13,17 +13,10 @@ import { EDIT_BOOKMARK } from '../actions/editBookmark';
 import { SET_MODALWINDOW_STATE } from '../actions/setModalWindowState';
 import { SAVE_BOOKMARK } from '../actions/saveBookmark';
 
-let bookMarkList = localStorage.getItem("bookMarkList");
-if (bookMarkList === null) {
-    bookMarkList = JSON.stringify([]);
-}
-let bookMarks = JSON.parse(bookMarkList);
+import { loadFromLocalStorage } from "../localStorage";
 
-let tagList = localStorage.getItem("tagList");
-if (tagList === null) {
-    tagList = JSON.stringify([]);
-}
-let tags = JSON.parse(tagList);
+const bookMarks = loadFromLocalStorage("bookmarkList"); 
+const tags = loadFromLocalStorage("tagList");
 
 const initialState = {
     bookMarks,

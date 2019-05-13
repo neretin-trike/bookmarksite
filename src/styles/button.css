@@ -32,6 +32,7 @@
 
 .button_theme_modal {
     color: var(--font-main-color);
+    font-size: 2rem;
 }
 
 .button_theme_interact:hover,  

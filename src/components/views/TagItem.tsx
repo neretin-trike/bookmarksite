@@ -14,7 +14,7 @@ class TagItem extends React.PureComponent<IProps> {
         return (
             <div style={{background: `${this.props.color}`}} className="tag-item">
                 <span className="tag-item__name">{this.props.name}</span>
-                {this.props.readonly || <button onClick={this.props.clickHandle}>x</button>}
+                {this.props.readonly || <button className="tag-item__button" onClick={this.props.clickHandle}>✕</button>}
             </div>
         )
     }

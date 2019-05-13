@@ -1,8 +1,7 @@
 
-import bookMarks from '../data/bookMarks';
-import tags from '../data/tags';
+// import bookMarks from '../data/bookMarks';
+// import tags from '../data/tags';
 
-import IAction from "../actions/action";
 import { ADD_BOOKMARK } from "../actions/addBookmark";
 import { DELETE_BOOKMARK } from "../actions/deleteBookmark";
 import { SEARCH_BOOKMARK } from "../actions/searchBookmark";
@@ -13,6 +12,18 @@ import { ADD_NEW_TAG } from '../actions/addNewTag';
 import { EDIT_BOOKMARK } from '../actions/editBookmark';
 import { SET_MODALWINDOW_STATE } from '../actions/setModalWindowState';
 import { SAVE_BOOKMARK } from '../actions/saveBookmark';
+
+let bookMarkList = localStorage.getItem("bookMarkList");
+if (bookMarkList === null) {
+    bookMarkList = JSON.stringify([]);
+}
+let bookMarks = JSON.parse(bookMarkList);
+
+let tagList = localStorage.getItem("tagList");
+if (tagList === null) {
+    tagList = JSON.stringify([]);
+}
+let tags = JSON.parse(tagList);
 
 const initialState = {
     bookMarks,

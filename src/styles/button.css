@@ -22,6 +22,20 @@
     color: var(--font-color-varian1);
 }
 
-.button_theme_interact:hover {
+.button_theme_plus {
+    color: var(--font-color-varian1);
+    font-size: 3.2rem;
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+}
+
+.button_theme_modal {
+    color: var(--font-main-color);
+}
+
+.button_theme_interact:hover,  
+.button_theme_plus:hover,
+.button_theme_modal:hover {
   color: var(--main-color);
 }

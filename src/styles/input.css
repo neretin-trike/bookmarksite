@@ -1,0 +1,22 @@
+.input {
+    display: block;
+    position: relative;
+}
+
+.input_theme_modal {
+    width: 95%;
+    border: none;
+    background: transparent;
+
+    font-size: 2rem;
+    margin: 1rem;
+    margin-top: -1rem;
+
+    color: var(--font-color-primary);
+    caret-color: var(--font-color-primary);
+}
+
+.input_theme_modal::-webkit-input-placeholder {color: var(--font-color-varian2); font-family: "Roboto"; font-style: italic}
+.input_theme_modal::-moz-placeholder          {color: var(--font-color-varian2); font-family: "Roboto"; font-style: italic}
+.input_theme_modal:-moz-placeholder           {color: var(--font-color-varian2); font-family: "Roboto"; font-style: italic}
+.input_theme_modal:-ms-input-placeholder      {color: var(--font-color-varian2); font-family: "Roboto"; font-style: italic}

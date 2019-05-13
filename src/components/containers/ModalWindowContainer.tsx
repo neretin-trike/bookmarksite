@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 
 class ModalWindowContainer extends React.Component<any> {
   render() {
-    return (
-        <ModalWindow title={this.props.addFormTitle} isModalWindowShow={this.props.isModalWindowShow} />
-    )
+    return this.props.isModalWindowShow && <ModalWindow title={this.props.addFormTitle}/>
   }
 }
 

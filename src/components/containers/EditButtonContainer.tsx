@@ -23,7 +23,7 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
     editBookmark: function (id) {
       dispatch(doEditBookmark({id}));
       dispatch(doSetModalWindowState({
-        addFormTitle: "Редактирова записи",
+        addFormTitle: "Редактирование записи",
         isModalWindowShow: true
       }));
     }

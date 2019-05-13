@@ -8,6 +8,8 @@ import CaptionFieldContainer from '../containers/CaptionFieldContainer';
 import URLFieldContainer from '../containers/URLFieldContainer';
 import TagFieldContainer from '../containers/TagFieldContainer';
 
+import '../../styles/window.css';
+
 interface IProps {
     title: string
 }
@@ -15,14 +17,14 @@ interface IProps {
 class Window extends React.PureComponent<IProps> {
     render() {
         return (
-            <div>
-                <h2>{this.props.title}</h2>
+            <div className="window">
+                <h2 className="window__title">{this.props.title}</h2>
                 <FieldGroupLayout>
                     <CaptionFieldContainer />
                     <URLFieldContainer />
                     <TagFieldContainer />
                 </FieldGroupLayout>
-                <InteractLayout>
+                <InteractLayout class="window__interact">
                     <CloseButtonContainer />
                     <SaveButtonContainer />
                 </InteractLayout>

@@ -6,7 +6,13 @@ import { doChangeAddFormValue } from '../../actions/changeAddFormValue';
 
 class CaptionFieldContainer extends React.Component<any> {
   render() {
-    return <Field placeholder="Название закладки" value={this.props.captionValue} name="caption" changeHandle={this.props.changeAddFormValue}/>
+    return <Field 
+      theme="input_theme_modal"
+      label="Название" 
+      placeholder="Название закладки" 
+      value={this.props.captionValue} 
+      name="caption" 
+      changeHandle={this.props.changeAddFormValue}/>
   }
 }
 

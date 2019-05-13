@@ -6,7 +6,13 @@ import { doChangeAddFormValue } from '../../actions/changeAddFormValue';
 
 class URLFieldContainer extends React.Component<any> {
   render() {
-    return <Field name="url" value={this.props.urlValue} placeholder="Адрес сайта" changeHandle={this.props.changeAddFormValue} />
+    return <Field 
+      theme="input_theme_modal"
+      label="URL" 
+      placeholder="Адрес сайта"
+      value={this.props.urlValue} 
+      name="url" 
+      changeHandle={this.props.changeAddFormValue} />
   }
 }
 

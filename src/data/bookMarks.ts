@@ -4,7 +4,7 @@ export default [
 		caption: "Разбор задач финала Яндекс.Алгоритма 2017",
 		url: "https://habr.com/company/yandex/blog/334250/",
 		createDate: "20.01.2018 15:48",
-		tagArray: [0, 1, 2,0,1,2,3]
+		tagArray: [0, 1, 2]
     },
     {
 		faviconPath: "http://...",

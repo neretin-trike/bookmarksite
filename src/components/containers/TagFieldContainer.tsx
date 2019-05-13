@@ -11,8 +11,14 @@ import { doAddNewTag } from '../../actions/addNewTag';
 class TagFieldContainer extends React.Component<any> {
   render() {
     return (
-      <Field name="tag" value={this.props.tagValue} placeholder="Имя тега" changeHandle={this.props.changeAddFormValue}>
-        <Button name="+" clickHandle={()=>this.props.addTag(this.props.tagValue, this.props.tags)}/>
+      <Field 
+        theme="input_theme_modal"
+        label="Тег" 
+        placeholder="Имя тега" 
+        value={this.props.tagValue} 
+        name="tag" 
+        changeHandle={this.props.changeAddFormValue}>
+        <Button theme="button_theme_plus" name="+" clickHandle={()=>this.props.addTag(this.props.tagValue, this.props.tags)}/>
         <TagsArray array={this.props.tagsAddForm} tags={this.props.tags} readonly={false}/>
       </Field>
     )

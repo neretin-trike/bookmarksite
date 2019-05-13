@@ -6,7 +6,7 @@ import { doSetModalWindowState, SET_MODALWINDOW_STATE } from '../../actions/setM
 
 class CloseButtonContainer extends React.Component<any> {
   render() {
-    return <Button name="Закрыть" clickHandle={this.props.closeModalWindow}/>
+    return <Button name="Закрыть" theme="button_theme_modal" clickHandle={this.props.closeModalWindow}/>
   }
 }
 
@@ -18,7 +18,7 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
     closeModalWindow: function (id) {
       dispatch(doSetModalWindowState({
-        addFormTitle: "",
+        addFormTitle: "Редактирование записи",
         isModalWindowShow: false
       }));
     }

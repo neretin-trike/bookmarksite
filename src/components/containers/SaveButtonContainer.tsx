@@ -7,7 +7,7 @@ import { doSetModalWindowState } from '../../actions/setModalWindowState';
 
 class SaveButtonContainer extends React.Component<any> {
   render() {
-    return <Button name="Сохранить" clickHandle={()=>this.props.saveBookmark(this.props.addFormValues, this.props.tagsAddForm)}/>
+    return <Button theme="button_theme_modal" name="Сохранить" clickHandle={()=>this.props.saveBookmark(this.props.addFormValues, this.props.tagsAddForm)}/>
   }
 }
 

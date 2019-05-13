@@ -1,0 +1,25 @@
+.field {
+    border: 0.1rem solid var(--font-color-varian1);
+    border-radius: 1rem;
+    margin-top: 3rem;
+
+    padding: 1.5rem;
+
+    position: relative;
+}
+
+.field__label {
+    width: auto;
+
+    padding: 0 1rem;
+
+    position: relative;
+    /* left: 1rem; */
+    top: -2.5rem;
+
+    font-size: 2rem;
+    color: var(--font-color-varian1);
+    background: var(--modal-color);
+
+    display: inline-block;
+}

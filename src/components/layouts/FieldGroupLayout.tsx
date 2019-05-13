@@ -2,7 +2,7 @@ import React from 'react';
 
 const FieldGroupLayout: React.FunctionComponent<any> = function (props) {
     return (
-      <section>
+      <section className="window__fields">
         {props.children}
       </section>
     )

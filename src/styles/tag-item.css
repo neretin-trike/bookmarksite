@@ -5,8 +5,33 @@
     
     margin-right: 1rem;
     margin-bottom: 1.5rem;
+    
+    font-size: 1.8rem;
+
+    display: flex;
+    align-items: center;
+
 }
 
 .tag-item__name {
+    color: var(--font-color-primary);
+}
+
+.tag-item__button {
+    width: 3rem;
+    height: 3rem;
+    border: 0.2rem solid white;
+    border-radius: 100%;
+
+    cursor: pointer;
+
+    line-height: 2.45rem;
+
+    margin-left: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+
+    background: transparent;
+
     color: var(--font-color-primary);
 }

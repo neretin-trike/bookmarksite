@@ -1,0 +1,28 @@
+.window {
+    padding: 3rem;
+
+    width: 80rem;
+    /* height: 60rem; */
+
+    box-shadow: 0 0.5rem 5.5rem 0 rgba(0, 0, 0, 0.2); 
+    background: var(--modal-color);
+    border-radius: 1rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.window__title {
+    margin: 0;
+
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 2.4rem;
+
+    color: var(--main-color);
+}
+
+.window__interact {
+    margin-left: auto;
+    margin-top: 2rem;
+}

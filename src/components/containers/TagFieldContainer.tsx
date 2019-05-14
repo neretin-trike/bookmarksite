@@ -7,6 +7,7 @@ import Button from '../views/Button';
 import { doChangeAddFormValue } from '../../actions/changeAddFormValue';
 import { doAddTag } from '../../actions/addTag';
 import { doAddNewTag } from '../../actions/addNewTag';
+import TagsArrayContainer from './TagsArrayContainer';
 
 class TagFieldContainer extends React.Component<any> {
   render() {
@@ -19,7 +20,8 @@ class TagFieldContainer extends React.Component<any> {
         name="tag" 
         changeHandle={this.props.changeAddFormValue}>
         <Button theme="button_theme_plus" name="+" clickHandle={()=>this.props.addTag(this.props.tagValue, this.props.tags)}/>
-        <TagsArray array={this.props.tagsAddForm} tags={this.props.tags} readonly={false}/>
+        
+        <TagsArrayContainer readonly={false} array={this.props.tagsAddForm}/>
       </Field>
     )
   }

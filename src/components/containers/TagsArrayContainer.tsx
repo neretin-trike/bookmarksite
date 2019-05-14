@@ -2,11 +2,14 @@ import React from 'react';
 import { connect } from "react-redux";
 
 import TagsArray from '../views/TagsArray';
+import { TagsArrayContext } from '../../hooks/useTagsArrayReadonly';
 
 class TagsArrayContainer extends React.Component<any> {
     render() {
         return (
-            <TagsArray array={this.props.array} readonly={true} tags={this.props.tags} />
+            <TagsArrayContext.Provider value={this.props.readonly}>
+                <TagsArray array={this.props.array} tags={this.props.tags} />
+            </TagsArrayContext.Provider>
         )
     }
 }

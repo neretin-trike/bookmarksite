@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import '../../styles/tag-item.css'
+import { useTagsArrayReadonly } from '../../hooks/useTagsArrayReadonly';
 
 interface IProps {
     clickHandle(): void,
     color: string,
     name: string,
-    readonly: boolean
 }
 
-class TagItem extends React.PureComponent<IProps> {
-    render() {
-        return (
-            <div style={{background: `${this.props.color}`}} className="tag-item">
-                <span className="tag-item__name">{this.props.name}</span>
-                {this.props.readonly || <button className="tag-item__button" onClick={this.props.clickHandle}>✕</button>}
-            </div>
-        )
-    }
-} 
+const TagItem: React.FunctionComponent<IProps> = (props) => {
+    let readonly = useTagsArrayReadonly();
+
+    return (
+        <div style={{background: `${props.color}`}} className="tag-item">
+            <span className="tag-item__name">{props.name}</span>
+            {readonly || <button className="tag-item__button" onClick={props.clickHandle}>✕</button>}
+        </div>
+    )
+}
 
 export default TagItem;

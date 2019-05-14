@@ -8,5 +8,10 @@
     height: 100%;
     width: 100%;
 
-    background-color: rgba(32, 28, 45, 0.85);
+    background: transparent;
+    transition: background 0.15s ease;
+}
+
+.modal-window_state_show {
+    background: rgba(32, 28, 45, 0.85);
 }

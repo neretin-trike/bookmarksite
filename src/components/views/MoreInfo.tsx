@@ -14,7 +14,7 @@ const MoreInfo: React.FunctionComponent<any> = function (props) {
             <time className="more-info__detail" >
                 <span className="more-info__caption">Дата создания: </span>{createDate}
             </time>
-            <TagsArrayContainer array={tagArray}/>
+            <TagsArrayContainer readonly={true} array={tagArray}/>
         </section>
     )
 }

@@ -14,7 +14,7 @@ interface IProps {
         },
     },
     id: number,
-    readonly: boolean,
+    // readonly: boolean,
     deleteTag(id): void,
 }
 
@@ -26,7 +26,7 @@ class TagItemContainer extends React.Component<IProps> {
 
     return <TagItem 
       name={this.props.tag.name} 
-      readonly={this.props.readonly} 
+      // readonly={this.props.readonly} 
       color={color} 
       clickHandle={()=>this.props.deleteTag(this.props.id)}/>
   }

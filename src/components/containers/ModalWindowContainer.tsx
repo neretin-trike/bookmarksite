@@ -2,10 +2,9 @@ import React from 'react';
 import ModalWindow from '../views/ModalWindow';
 import { connect } from 'react-redux';
 
-class ModalWindowContainer extends React.Component<any> {
-  render() {
-    return this.props.isModalWindowShow && <ModalWindow title={this.props.addFormTitle}/>
-  }
+
+const ModalWindowContainer: React.FunctionComponent<any> = (props) => {
+  return props.isModalWindowShow && <ModalWindow title={props.addFormTitle}/>
 }
 
 interface IStateProps {

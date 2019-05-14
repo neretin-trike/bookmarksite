@@ -16,7 +16,7 @@ class ModalWindow extends React.PureComponent<IProps> {
                     onChange={this.props.changeHandle} 
                     value={this.props.value} 
                     placeholder="Введите название или тег"/>
-                <img className="search-bar__img" src="images/search.svg" alt="поиск"></img>
+                <img className="search-bar__img" src="public/images/search.svg" alt="поиск"></img>
             </section>
         )
     }

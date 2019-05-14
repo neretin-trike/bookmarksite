@@ -31,7 +31,14 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
     return {
         searchBookmark: function (event) {
             const target = event.target;
-            dispatch(doSearchBookmark({value: target.value}));
+            let {value} = target;
+
+            if (value.length >= 256) {
+                alert("Ошибка: Превышено допустимое количество символов. Максимум: "+256);
+                return;
+            }
+
+            dispatch(doSearchBookmark({value}));
         }
     }
 }

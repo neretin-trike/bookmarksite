@@ -12,6 +12,8 @@ class ModalWindow extends React.PureComponent<IProps> {
         return (
             <section className="search-bar">
                 <input 
+                    maxLength={256}
+                    autoFocus={true}
                     className="search-bar__input"
                     onChange={this.props.changeHandle} 
                     value={this.props.value} 

@@ -4,26 +4,31 @@ import { connect } from "react-redux";
 import Button from '../views/Button';
 import { doSaveBookmark } from '../../actions/saveBookmark';
 import { doSetModalWindowState } from '../../actions/setModalWindowState';
-import { func } from 'prop-types';
 
 class SaveButtonContainer extends React.Component<any> {
   render() {
-    return <Button theme="button_theme_modal" name="Сохранить" clickHandle={()=>this.props.saveBookmark(this.props.addFormValues, this.props.tagsAddForm)}/>
+    return <Button 
+              disabled={this.props.addFormSaveButton}
+              theme="button_theme_modal" 
+              name="Сохранить" 
+              clickHandle={()=>this.props.saveBookmark(this.props.addFormValues, this.props.tagsAddForm)}/>
   }
 }
 
 interface IStateProps {
   addFormValues: object,
-  tagsAddForm: Array<number>
+  tagsAddForm: Array<number>,
+  addFormSaveButton: boolean
 }
 interface IDispatchProps {
-  saveBookmark(formValues, tagsArray)
+  saveBookmark(formValues, tagsArray);
 }
 
 function mapStateToProps(state) {
   return {
     addFormValues: state.addFormValues as object,
-    tagsAddForm: state.tagsAddForm as Array<number>
+    tagsAddForm: state.tagsAddForm as Array<number>,
+    addFormSaveButton: state.addFormSaveButton as boolean
   };
 }
 
@@ -54,7 +59,7 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
         createDate: `${time} ${date}`,
         tagArray: tagsArray
       }
-
+    
       dispatch(doSaveBookmark(newBookmark));
       dispatch(doSetModalWindowState({
         addFormTitle: "Редактировать запись",

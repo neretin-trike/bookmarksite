@@ -4,6 +4,7 @@
     box-shadow: 0 0.5rem 5.5rem 0 rgba(0, 0, 0, 0.1); 
 
     padding: 3.5rem 3rem;
+    padding-right: 7.5rem;
 }
 
 .search-bar__input {

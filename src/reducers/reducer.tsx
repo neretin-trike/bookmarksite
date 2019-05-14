@@ -12,6 +12,8 @@ import { ADD_NEW_TAG } from '../actions/addNewTag';
 import { EDIT_BOOKMARK } from '../actions/editBookmark';
 import { SET_MODALWINDOW_STATE } from '../actions/setModalWindowState';
 import { SAVE_BOOKMARK } from '../actions/saveBookmark';
+import { ACCESS_SAVE_BOOKMARK } from "../actions/accessSaveBookmark";
+import { VALIDEATE_FIELD } from "../actions/validateField";
 
 import { loadFromLocalStorage } from "../localStorage";
 
@@ -30,7 +32,9 @@ const initialState = {
         url: "",
         tag: "",
     },
-    tagsAddForm: Array(0)
+    tagsAddForm: Array(0),
+    addFormSaveButton: true,
+    validationErrors: {},
 }
 
 const reducer = function(state = initialState, action) {
@@ -138,6 +142,25 @@ const reducer = function(state = initialState, action) {
         return {...state,
             isModalWindowShow,
             addFormTitle
+        };
+    }
+    case ACCESS_SAVE_BOOKMARK: {
+        let {disabled} = action.payload;
+
+        return {...state,
+            addFormSaveButton: disabled
+        };
+    }
+    case VALIDEATE_FIELD: {
+        let {message, name} = action.payload;
+
+        let items = {...state.validationErrors};
+        items[name] = message;
+
+        console.log(items);
+
+        return {...state,
+            validationErrors: items
         };
     }
   }

@@ -4,7 +4,7 @@ import '../../styles/input.css'
 import '../../styles/field.css'
 
 interface IProps {
-    changeHandle(): void,
+    changeHandle(any?): void,
     placeholder: string,
     name: string,
     value: string,

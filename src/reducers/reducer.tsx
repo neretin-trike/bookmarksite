@@ -36,7 +36,7 @@ const initialState = {
     addFormSaveButton: true,
     validationErrors: {
         caption:"error",
-        url:"error"
+        url:"error",
     },
 }
 

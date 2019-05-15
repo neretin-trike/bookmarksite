@@ -56,14 +56,12 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
             console.log(name,"зашло");
             obj = {
               name: "url",
-              message: "Произошла ошибка характера"
+              message: "Адресд должен начинаться с http*"
             };
           } 
 
           let items = {...error};
           items[obj.name] = obj.message;
-
-          console.log(items);
 
           let hasError = false;
           for (const key in items) {

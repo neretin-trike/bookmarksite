@@ -3,7 +3,7 @@ import React from 'react';
 import '../../styles/button.css'
 
 interface IProps {
-    clickHandle(): void,
+    clickHandle(any?): void,
     name: string,
     disabled?: boolean,
     theme?: string

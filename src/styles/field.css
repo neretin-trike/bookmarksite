@@ -23,3 +23,15 @@
 
     display: inline-block;
 }
+
+.field__autocomplete {
+    z-index: -1;
+
+    position: absolute;
+    color: var(--main-color);
+    left: 2.5rem;
+    top: 2.9rem;
+
+    letter-spacing: -0.034rem;
+    font-size: 2rem;
+}

@@ -5,6 +5,7 @@ import '../../styles/field.css'
 
 interface IProps {
     changeHandle(any?): void,
+    keypressHandle?(any?): void,
     placeholder: string,
     name: string,
     value: string,
@@ -19,6 +20,7 @@ class Field extends React.PureComponent<IProps> {
                 <label className="field__label">{this.props.label}</label>
                 <input name={this.props.name} 
                        value={this.props.value} 
+                       onKeyDown={this.props.keypressHandle}
                        onChange={this.props.changeHandle}
                        placeholder={this.props.placeholder}
                        className={`input ${this.props.theme}`} />

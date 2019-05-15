@@ -35,6 +35,12 @@
     top: 2rem;
 }
 
+.button_theme_plus:disabled,
+.button_theme_plus:disabled:hover {
+    cursor: default;
+    color: var(--font-color-varian2);
+}
+
 .button_theme_modal {
     color: var(--font-main-color);
     font-size: 2rem;

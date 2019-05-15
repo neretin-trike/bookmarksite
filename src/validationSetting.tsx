@@ -1,39 +1,39 @@
 
-export const searchInputMaxLength = 256;
-
-
-
 export default class Validate {
-    // public rules;
     public target;
-    public errors;
+    public errors?;
 
-    constructor(name, errors) {
-        // this.rules = rules;
+    constructor(name, errors?) {
         this.errors = errors;
         this.target = {
             name: name,
             message: ""
           };
     }
-    check(rules) {
+    check(rules, singleField?) {
 
-        rules.forEach(rule => {
-            this.target = rule() || this.target;
-        });
+      let hasError = false;
 
+      rules.forEach(rule => {
+          this.target = rule() || this.target;
+      });
 
-        let items = {...this.errors};
-        items[this.target.name] = this.target.message;
+      let items = {...this.errors};
+      items[this.target.name] = this.target.message;
 
-        let hasError = false;
+      if (singleField) {
+        if (this.target.message !== "") {
+          hasError = true;
+        }
+      } else {
         for (const key in items) {
-          if (items[key] !== "") {
+          if (items[key] !== "" && key !== "tag") {
             hasError = true;
           }
         }
+      }
 
-        return [items, hasError];
+      return [items, hasError];
     }
 }
 

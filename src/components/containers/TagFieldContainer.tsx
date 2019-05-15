@@ -7,6 +7,8 @@ import { doChangeAddFormValue } from '../../actions/changeAddFormValue';
 import { doAddTag } from '../../actions/addTag';
 import { doAddNewTag } from '../../actions/addNewTag';
 import TagsArrayContainer from './TagsArrayContainer';
+import Validate from '../../validationSetting';
+import { doValidateField } from '../../actions/validateField';
 
 
 const TagFieldContainer: React.FunctionComponent<any> = (props) =>{
@@ -14,51 +16,50 @@ const TagFieldContainer: React.FunctionComponent<any> = (props) =>{
 
     const [autocomplete, setComplete] = useState("");
 
-    let obj = {
-      name: "tag",
-      message: ""
-    };
+    let tagClickValidate = new Validate("tag",props.validationErrors);
+    let tagChangeValidate = new Validate("tag",props.validationErrors);
 
     const handleChange = (event) => {
       const target = event.target;
       let {value, name} = target;
 
-      if (value.length < 3 || value.length > 32) {
-        obj = {
-          name: "tag",
-          message: "Символов должно быть больше 3 и меньше 32"
-        };
-      } 
-
-      if (value.search(/^[a-zа-яё0-9]+$/i) === -1) {
-        obj = {
-          name: "tag",
-          message: "Должны быть символы"
-        };
+      function rule() {
+        if (value.length < 3 || value.length > 32) {
+          return {
+            name,
+            message: "Символов должно быть больше 3 и меньше 32"
+          };
+        } 
       }
-
-      if (  props.tagsAddForm.some( (element) => {
-        let tag = props.tags[element].name;
-        if (tag.toLowerCase() === value.toLowerCase()) return true;
-      }) ) {
-        obj = {
-          name: "tag",
-          message: "Найдены дубликаты"
-        };
+      function rule2() {
+        if (value.search(/^[a-zа-яё0-9]+$/i) === -1) {
+          return {
+            name,
+            message: "Должны быть символы"
+          };
+        }
       }
-
-      if (props.tagsAddForm.length === 8) {
-        console.log(name,"cюда зашло");
-        obj = {
-          name: "tag",
-          message: "Не больше 8 штук"
-        };
+      function rule3() {
+        if (props.tagsAddForm.some( (element) => {
+          let tag = props.tags[element].name;
+          if (tag.toLowerCase() === value.toLowerCase()) return true;
+        }) ) {
+          return {
+            name,
+            message: "Найдены дубликаты"
+          };
+        }
+      }
+      function rule4() {
+        if (props.tagsAddForm.length === 8) {
+          return {
+            name,
+            message: "Не больше 8 штук"
+          };
+        }
       }
             
-      let hasError = false;
-      if (obj.message !== "") {
-        hasError = true;
-      }
+      let [items, hasError] = tagChangeValidate.check([rule, rule2, rule3, rule4], true);
 
       if (hasError) {
         setDisabled(true);
@@ -76,7 +77,7 @@ const TagFieldContainer: React.FunctionComponent<any> = (props) =>{
         setComplete("");
       }
 
-      props.changeAddFormValue(event);
+      props.changeAddFormValue(items, event);
     }
     
     const handleKeyPress = (event) => {
@@ -84,31 +85,25 @@ const TagFieldContainer: React.FunctionComponent<any> = (props) =>{
         event.preventDefault();
 
         let ob = {
-          target: {
-            value: autocomplete,
-            name: "tag"
-          }
+          target: { value: autocomplete, name: "tag" }
         }
         handleChange(ob);
-
         setComplete("");
       }
     }
 
     const handleClick = (event) => {
 
-      if (props.tagsAddForm.length === 7) {
-        console.log(name,"cюда зашло");
-        obj = {
-          name: "tag",
-          message: "Не больше 8 штук"
-        };
-      }
+      function rule() {
+        if (props.tagsAddForm.length === 7) {
+          return {
+            name: "tag",
+            message: "Не больше 8 штук"
+          };
+        }
+      } 
 
-      let hasError = false;
-      if (obj.message !== "") {
-        hasError = true;
-      }
+      let [items, hasError] = tagClickValidate.check([rule], true);
 
       if (hasError) {
         setDisabled(true);
@@ -117,15 +112,13 @@ const TagFieldContainer: React.FunctionComponent<any> = (props) =>{
       }
 
       let ob = {
-        target: {
-          value: "",
-          name: "tag"
-        }
+        target: { value: "", name: "tag"}
       }
       handleChange(ob);
 
-      props.addTag(props.tagValue, props.tags);
+      props.addTag(items, props.tagValue, props.tags);
     }
+
 
     return (
       <Field 
@@ -163,19 +156,21 @@ function mapStateToProps(state) {
 }
 
 interface IDispatchProps {
-  changeAddFormValue(event),
-  addTag(value, tags)
+  changeAddFormValue(items, event),
+  addTag(items, value, tags)
 }
 
 const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
-    changeAddFormValue: function (event) {
+    changeAddFormValue: function (items, event) {
           const target = event.target;
           let {value, name} = target;
+
+          dispatch(doValidateField(items));
           
           dispatch(doChangeAddFormValue({value, name}));
     },
-    addTag: function(value, tags) {
+    addTag: function(items, value, tags) {
       
       let tagName = tags.map(item => item.name);
       let id = tagName.indexOf(value);
@@ -220,7 +215,6 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
       } 
 
       dispatch(doAddTag({id}));
-      // dispatch(doChangeAddFormValue({value: "", name: "tag"}));
     }
   }
 }

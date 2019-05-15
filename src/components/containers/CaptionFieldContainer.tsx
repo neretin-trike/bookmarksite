@@ -25,13 +25,13 @@ interface IDispatchProps {
   changeAddFormValue(error, event)
 }
 interface IStateProps {
-  urlValue: string,
+  captionValue: string,
   validationErrors: string
 }
 
 function mapStateToProps(state) {
   return {
-    urlValue: state.addFormValues.url as string,
+    captionValue: state.addFormValues.caption as string,
     validationErrors: state.validationErrors as string
   };
 }
@@ -46,20 +46,17 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
           function rule () {
             if (value.length < 3 || value.length > 256) {
               return {
-                  name: "caption",
+                  name,
                   message: "Символов должно быть больше 3 и меньше 256"
               }
             } 
           }
           let [items, hasError] = valdator.check([rule]);
 
-          console.log(items);
-
           dispatch(doValidateField(items));
 
           if (hasError) {
             dispatch(doAccessSaveBookmark({disabled: true}))
-            return;
           } else {
             dispatch(doAccessSaveBookmark({disabled: false}))
           }

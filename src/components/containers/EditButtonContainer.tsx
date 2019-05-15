@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Button from '../views/Button';
 import { doEditBookmark } from '../../actions/editBookmark';
 import { doSetModalWindowState } from '../../actions/setModalWindowState';
+import { doAccessSaveBookmark } from '../../actions/accessSaveBookmark';
 
 class EditButtonContainer extends React.Component<any> {
   clickHandle() {
@@ -24,8 +25,9 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
       dispatch(doEditBookmark({id}));
       dispatch(doSetModalWindowState({
         addFormTitle: "Редактирование записи",
-        isModalWindowShow: true
+        isModalWindowShow: true,
       }));
+      dispatch(doAccessSaveBookmark({disabled:false}));
     }
   }
 }

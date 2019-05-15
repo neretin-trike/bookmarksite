@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import InteractLayout from '../layouts/InteractLayout';
 import CloseButtonContainer from '../containers/CloseButtonContainer';
@@ -7,6 +7,7 @@ import FieldGroupLayout from '../layouts/FieldGroupLayout';
 import CaptionFieldContainer from '../containers/CaptionFieldContainer';
 import URLFieldContainer from '../containers/URLFieldContainer';
 import TagFieldContainer from '../containers/TagFieldContainer';
+import HintContainer from '../containers/HintContainer';
 import { useAnimation } from '../../hooks/useAnimation';
 
 import '../../styles/window.css';
@@ -25,6 +26,7 @@ const Window: React.FunctionComponent<IProps> = (props) => {
                 <URLFieldContainer />
                 <TagFieldContainer />
             </FieldGroupLayout>
+            <HintContainer />
             <InteractLayout class="window__interact">
                 <CloseButtonContainer />
                 <SaveButtonContainer />

@@ -34,10 +34,7 @@ const initialState = {
     },
     tagsAddForm: Array(0),
     addFormSaveButton: true,
-    validationErrors: {
-        caption:"error",
-        url:"error",
-    },
+    validationErrors: {}
 }
 
 const reducer = function(state = initialState, action) {
@@ -141,10 +138,17 @@ const reducer = function(state = initialState, action) {
     }
     case SET_MODALWINDOW_STATE: {
         let {isModalWindowShow, addFormTitle} = action.payload;
+        let validationErrors = {
+            caption: "error",
+            url: "error",
+            tag: "error",
+        }
 
         return {...state,
             isModalWindowShow,
-            addFormTitle
+            addFormTitle,
+            validationErrors,
+            addFormSaveButton: true,
         };
     }
     case ACCESS_SAVE_BOOKMARK: {

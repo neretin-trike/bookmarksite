@@ -47,7 +47,7 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
           function rule () {
             if (value.length < 3 || value.length > 256) {
               return {
-                  name: "url",
+                  name,
                   message: "Символов должно быть больше 3 и меньше 256"
               }
             } 
@@ -55,7 +55,7 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
           function rule2 () {
             if ((value.startsWith("http://") === false ) && (value.startsWith("https://") === false) ) {
               return {
-                  name: "url",
+                  name,
                   message: "Адрес должен начинаться с http*"
               }
             } 

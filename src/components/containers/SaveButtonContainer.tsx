@@ -51,9 +51,9 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
       }
 
       let {time, date} = getFormattedDate();
-      
+
       let newBookmark = {
-        faviconPath: "http://...",
+        faviconPath: `https://www.google.com/s2/favicons?domain=${formValues.url}`, // берёт ссылку на фавиконы из индексированных сайтов
         caption: formValues.caption,
         url: formValues.url,
         createDate: `${time} ${date}`,

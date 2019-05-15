@@ -6,23 +6,29 @@ import { doChangeAddFormValue } from '../../actions/changeAddFormValue';
 import { doAccessSaveBookmark } from '../../actions/accessSaveBookmark';
 import { doValidateField } from '../../actions/validateField';
 import Validate from '../../validationSetting';
+import Button from '../views/Button';
 
-class URLFieldContainer extends React.Component<any> {
-  render() {
-    let URLValid = new Validate("url", this.props.validationErrors);
+const URLFieldContainer: React.FunctionComponent<any> = (props) => {
+
+    let URLValid = new Validate("url", props.validationErrors);
 
     return <Field 
       theme="input_theme_modal"
       label="URL *" 
       placeholder="Адрес сайта"
-      value={this.props.urlValue} 
+      value={props.urlValue} 
       name="url" 
-      changeHandle={(event) => this.props.changeAddFormValue(URLValid, event)} />
-  }
+      changeHandle={(event) => props.changeAddFormValue(URLValid, event)}>
+        <Button 
+          theme="button_theme_plus" 
+          name="⭱" 
+          clickHandle={()=>props.getTitleFromURL(props.urlValue)}/>
+      </Field>
 }
 
 interface IDispatchProps {
-  changeAddFormValue(error, event)
+  changeAddFormValue(error, event),
+  getTitleFromURL(any)
 }
 interface IStateProps {
   urlValue: string,
@@ -35,8 +41,6 @@ function mapStateToProps(state) {
     validationErrors: state.validationErrors as string
   };
 }
-
-
 
 const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
@@ -71,7 +75,20 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
           }
 
           dispatch(doChangeAddFormValue({value, name}));
-      }
+      },
+      getTitleFromURL: function (url) {
+        fetch(`http://textance.herokuapp.com/title/${url}`)
+        .then( response => response.text())
+        .then( response => {
+          if (response !== "") {
+            dispatch(doChangeAddFormValue({value:response, name:"caption"}));
+            dispatch(doAccessSaveBookmark({disabled:false}));
+          } else {
+            alert("Не удаётся получить имя сайта, пожалуйста введите вручную");
+          }
+        })
+        .catch( error => alert(error));
+      } 
   }
 }
 

@@ -34,7 +34,10 @@ const initialState = {
     },
     tagsAddForm: Array(0),
     addFormSaveButton: true,
-    validationErrors: {},
+    validationErrors: {
+        caption:"error",
+        url:"error"
+    },
 }
 
 const reducer = function(state = initialState, action) {
@@ -152,15 +155,9 @@ const reducer = function(state = initialState, action) {
         };
     }
     case VALIDEATE_FIELD: {
-        let {message, name} = action.payload;
-
-        let items = {...state.validationErrors};
-        items[name] = message;
-
-        console.log(items);
-
+        let data = action.payload;
         return {...state,
-            validationErrors: items
+            validationErrors: data
         };
     }
   }

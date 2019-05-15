@@ -41,25 +41,38 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
 
           let obj = {
             name: "url",
-            message: "Символов должно быть больше 3 и меньше 256"
+            message: ""
           };
 
-          if (value.length < 3 && value.length >= 256) {
+          if (value.length < 3 || value.length > 256) {
+            console.log(name,"зашло");
             obj = {
               name: "url",
-              message: ""
+              message: "Символов должно быть больше 3 и меньше 256"
             };
           } 
 
+          if ( (value.startsWith("http://") === false ) && (value.startsWith("https://") === false) ) {
+            console.log(name,"зашло");
+            obj = {
+              name: "url",
+              message: "Произошла ошибка характера"
+            };
+          } 
+
+          let items = {...error};
+          items[obj.name] = obj.message;
+
+          console.log(items);
+
           let hasError = false;
-          for (const key in error) {
-            if (error[key] !== "") {
+          for (const key in items) {
+            if (items[key] !== "") {
               hasError = true;
             }
           }
-          if (obj.message !== "") {
-            hasError = true;
-          }
+
+          dispatch(doValidateField(items));
 
           if (hasError) {
             dispatch(doAccessSaveBookmark({disabled: true}))

@@ -2,8 +2,7 @@ import IAction from "./action";
 
 export const VALIDEATE_FIELD = "VALIDEATE_FIELD";
 export type VALIDEATE_FIELD = {
-    message: string,
-    name: string
+   data: object
 }
 
 export function doValidateField(data: VALIDEATE_FIELD): IAction<VALIDEATE_FIELD> {

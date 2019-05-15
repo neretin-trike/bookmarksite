@@ -5,16 +5,19 @@ import Field from '../views/Field';
 import { doChangeAddFormValue } from '../../actions/changeAddFormValue';
 import { doAccessSaveBookmark } from '../../actions/accessSaveBookmark';
 import { doValidateField } from '../../actions/validateField';
+import Validate from '../../validationSetting';
 
 class CaptionFieldContainer extends React.Component<any> {
   render() {
+    let captionValid = new Validate("caption", this.props.validationErrors);
+    
     return <Field 
       theme="input_theme_modal"
       label="Название *" 
       placeholder="Название закладки" 
       value={this.props.captionValue} 
       name="caption" 
-      changeHandle={ (event) => this.props.changeAddFormValue(this.props.validationErrors, event)}/>
+      changeHandle={(event) => this.props.changeAddFormValue(captionValid, event)}/>
   }
 }
 
@@ -35,38 +38,28 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
-    changeAddFormValue: function (error, event) {
+    changeAddFormValue: function (valdator, event) {
           const target = event.target;
           let {value, name} = target;
 
-          let obj = {
-            name: "caption",
-            message: ""
-          };
 
-          if (value.length < 3 || value.length > 256) {
-            console.log(name,"зашло");
-            obj = {
-              name: "caption",
-              message: "Символов должно быть больше 3 и меньше 256"
-            };
-          } 
-
-          let items = {...error};
-          items[obj.name] = obj.message;
-
-
-          let hasError = false;
-          for (const key in items) {
-            if (items[key] !== "") {
-              hasError = true;
-            }
+          function rule () {
+            if (value.length < 3 || value.length > 256) {
+              return {
+                  name: "caption",
+                  message: "Символов должно быть больше 3 и меньше 256"
+              }
+            } 
           }
+          let [items, hasError] = valdator.check([rule]);
+
+          console.log(items);
 
           dispatch(doValidateField(items));
 
           if (hasError) {
             dispatch(doAccessSaveBookmark({disabled: true}))
+            return;
           } else {
             dispatch(doAccessSaveBookmark({disabled: false}))
           }

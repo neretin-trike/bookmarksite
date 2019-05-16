@@ -5,6 +5,7 @@ import '../../styles/button.css'
 interface IProps {
     clickHandle(any?): void,
     name: string,
+    title?: string,
     disabled?: boolean,
     theme?: string
 }
@@ -12,8 +13,12 @@ interface IProps {
 class Button extends React.PureComponent<IProps> {
     render() {
         return (
-            <button disabled={this.props.disabled} className={`button ${this.props.theme}`} onClick={this.props.clickHandle}>
-                {this.props.name}
+            <button 
+                disabled={this.props.disabled} 
+                className={`button ${this.props.theme}`} 
+                onClick={this.props.clickHandle}
+                title={this.props.title}>
+                    {this.props.name}
             </button> 
         )
     }

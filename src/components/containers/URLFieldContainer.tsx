@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import Field from '../views/Field';
@@ -9,8 +9,43 @@ import Validate from '../../validationSetting';
 import Button from '../views/Button';
 
 const URLFieldContainer: React.FunctionComponent<any> = (props) => {
+    const [isDisabled, setDisabled] = useState(true);
 
     let URLValid = new Validate("url", props.validationErrors);
+
+    const handleChange = (event) => {
+      const target = event.target;
+      let {value, name} = target;
+
+      function rule () {
+        if (value.length < 3 || value.length > 256) {
+          return {
+              name,
+              message: "Символов должно быть больше 3 и меньше 256"
+          }
+        } 
+      }
+      function rule2 () {
+        if ((value.startsWith("http://") === false ) && (value.startsWith("https://") === false) ) {
+          return {
+              name,
+              message: "Адрес должен начинаться с http*"
+          }
+        } 
+      }
+
+      let [items, hasError] = URLValid.check([rule,rule2], true);
+      console.log(hasError);
+      if (hasError) {
+        setDisabled(true);
+      } else {
+        setDisabled(false);
+      }
+
+      [items, hasError] = URLValid.check([rule,rule2]);
+
+      props.changeAddFormValue(items, hasError, event);
+    }
 
     return <Field 
       theme="input_theme_modal"
@@ -18,16 +53,18 @@ const URLFieldContainer: React.FunctionComponent<any> = (props) => {
       placeholder="Адрес сайта"
       value={props.urlValue} 
       name="url" 
-      changeHandle={(event) => props.changeAddFormValue(URLValid, event)}>
+      changeHandle={handleChange}>
         <Button 
+          disabled={isDisabled}
+          title="Автоматически заполнить название закладки"
           theme="button_theme_plus" 
-          name="⭱" 
+          name="◈" 
           clickHandle={()=>props.getTitleFromURL(props.urlValue)}/>
       </Field>
 }
 
 interface IDispatchProps {
-  changeAddFormValue(error, event),
+  changeAddFormValue(items, hasError, event),
   getTitleFromURL(any)
 }
 interface IStateProps {
@@ -44,27 +81,9 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
-    changeAddFormValue: function (valdator, event) {
+    changeAddFormValue: function (items, hasError, event) {
           const target = event.target;
           let {value, name} = target;
-
-          function rule () {
-            if (value.length < 3 || value.length > 256) {
-              return {
-                  name,
-                  message: "Символов должно быть больше 3 и меньше 256"
-              }
-            } 
-          }
-          function rule2 () {
-            if ((value.startsWith("http://") === false ) && (value.startsWith("https://") === false) ) {
-              return {
-                  name,
-                  message: "Адрес должен начинаться с http*"
-              }
-            } 
-          }
-          let [items, hasError] = valdator.check([rule,rule2]);
 
           dispatch(doValidateField(items));
 

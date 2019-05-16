@@ -133,6 +133,7 @@ const TagFieldContainer: React.FunctionComponent<any> = (props) =>{
           disabled={isDisabled}
           theme="button_theme_plus" 
           name="+" 
+          title="Добавить тег"
           clickHandle={handleClick}/>
         <div className="field__autocomplete">{autocomplete}</div>
         <TagsArrayContainer readonly={false} array={props.tagsAddForm}/>

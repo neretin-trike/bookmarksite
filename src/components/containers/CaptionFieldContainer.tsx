@@ -56,8 +56,10 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
           dispatch(doValidateField(items));
 
           if (hasError) {
+            // console.log("непонял бля");
             dispatch(doAccessSaveBookmark({disabled: true}))
           } else {
+            // console.log("непонял нахуй");
             dispatch(doAccessSaveBookmark({disabled: false}))
           }
 

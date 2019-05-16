@@ -60,11 +60,11 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
         tagArray: tagsArray
       }
     
-      dispatch(doSaveBookmark(newBookmark));
       dispatch(doSetModalWindowState({
         addFormTitle: "Редактировать запись",
         isModalWindowShow: false
       }));
+      dispatch(doSaveBookmark(newBookmark));
     }
   }
 }

@@ -20,11 +20,11 @@ interface IDispatchProps {
 const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
     addBookmark: function () {
-      dispatch(doAddBookmark({}));
       dispatch(doSetModalWindowState({
         addFormTitle: "Добавление новой записи",
         isModalWindowShow: true
       }));
+      dispatch(doAddBookmark({}));
     }
   }
 }

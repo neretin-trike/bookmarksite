@@ -22,11 +22,11 @@ interface IDispatchProps {
 const mapDispatchToProps = function(dispatch, _ownProps) {
   return {
     editBookmark: function (id) {
-      dispatch(doEditBookmark({id}));
       dispatch(doSetModalWindowState({
         addFormTitle: "Редактирование записи",
         isModalWindowShow: true,
       }));
+      dispatch(doEditBookmark({id}));
       dispatch(doAccessSaveBookmark({disabled:false}));
     }
   }

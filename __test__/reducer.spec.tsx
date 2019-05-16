@@ -13,16 +13,23 @@ describe('news reducer', () => { //  describe - группировка для н
       }
     }
     initialState.bookMarks = bookMarks;
-    
+
     let {id} = action.payload;
     let {caption, url, tagArray} = bookMarks[id];
     let newAddFormValues = {id, caption, url, tag: "" };
     let newTagsAddForm = tagArray;
+
+    let newValidationErrors = {
+      caption: "",
+      url: "",
+      tag: "",
+    }
     
     expect(reducer(initialState, action)).toEqual({
       ...initialState,
       addFormValues: newAddFormValues,
-      tagsAddForm: newTagsAddForm
+      tagsAddForm: newTagsAddForm,
+      validationErrors: newValidationErrors
     })
   })
 

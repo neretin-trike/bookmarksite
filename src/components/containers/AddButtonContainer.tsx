@@ -5,7 +5,7 @@ import Button from '../views/Button';
 import { doAddBookmark } from '../../actions/addBookmark';
 import { doSetModalWindowState } from '../../actions/setModalWindowState';
 
-class AddButtonContainer extends React.Component<any> {
+export class AddButtonContainer extends React.Component<any> {
   render() {
     return <Button 
             theme="button_theme_add header-layout__button" 

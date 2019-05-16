@@ -75,7 +75,7 @@ export const reducer = function(state = initialState, action) {
         let newAddFormValues = {id, caption, url, tag: "" };
         let newTagsAddForm = tagArray;
 
-        let validationErrors = {
+        let newValidationErrors = {
             caption: "",
             url: "",
             tag: "",
@@ -84,7 +84,7 @@ export const reducer = function(state = initialState, action) {
         return {...state,
             addFormValues: newAddFormValues,
             tagsAddForm: newTagsAddForm,
-            validationErrors
+            validationErrors: newValidationErrors
         };
     }
     case SAVE_BOOKMARK: {

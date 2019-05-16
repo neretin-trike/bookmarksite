@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import reducers from './reducers/reducer';
+import { reducer } from './reducers/reducer';
 import { saveToLocaleStorage } from './localStorage';
 
 const persistLocalStorage = store => next => action => {
@@ -29,6 +29,6 @@ const persistLocalStorage = store => next => action => {
     return result;
 } 
 
-const store = createStore(reducers, applyMiddleware(persistLocalStorage));
+const store = createStore(reducer, applyMiddleware(persistLocalStorage));
 
 export default store;

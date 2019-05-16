@@ -5,7 +5,7 @@ import Field from '../views/Field';
 import { doChangeAddFormValue } from '../../actions/changeAddFormValue';
 import { doAccessSaveBookmark } from '../../actions/accessSaveBookmark';
 import { doValidateField } from '../../actions/validateField';
-import Validate from '../../validationSetting';
+import Validate from '../../validator';
 import Button from '../views/Button';
 
 const URLFieldContainer: React.FunctionComponent<any> = (props) => {
@@ -35,7 +35,6 @@ const URLFieldContainer: React.FunctionComponent<any> = (props) => {
       }
 
       let [items, hasError] = URLValid.check([rule,rule2], true);
-      console.log(hasError);
       if (hasError) {
         setDisabled(true);
       } else {

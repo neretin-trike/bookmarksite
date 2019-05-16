@@ -7,7 +7,7 @@ import { doChangeAddFormValue } from '../../actions/changeAddFormValue';
 import { doAddTag } from '../../actions/addTag';
 import { doAddNewTag } from '../../actions/addNewTag';
 import TagsArrayContainer from './TagsArrayContainer';
-import Validate from '../../validationSetting';
+import Validate from '../../validator';
 import { doValidateField } from '../../actions/validateField';
 
 

@@ -33,7 +33,10 @@
 }
 
 .bookmark-item__link {
-    padding-left: 3rem; 
+    margin-left: 3rem; 
+}
+.bookmark-item__link:hover {
+    text-decoration: underline;
 }
 
 .bookmark-item__interact {

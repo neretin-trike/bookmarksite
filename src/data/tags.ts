@@ -1,26 +1,26 @@
 export default [
     {
-		name: "Яндекс",
-		color: "red"
+		name: "яндекс",
+		color: { red: 0, green: 0, blue: 0 }
     },
     {
 		name: "математика",
-		color: "green"
+		color: { red: 0, green: 0, blue: 0 }
     },
     {
 		name: "задачи",
-		color: "blue"
+		color: { red: 0, green: 0, blue: 0 }
     },
     {
 		name: "практика",
-		color: "yellow"
+		color: { red: 0, green: 0, blue: 0 }
     },
     {
 		name: "JavaScript",
-		color: "cyan"
+		color: { red: 0, green: 0, blue: 0 }
     },
     {
 		name: "программирование",
-		color: "magenta"
+		color: { red: 0, green: 0, blue: 0 }
 	},
 ]

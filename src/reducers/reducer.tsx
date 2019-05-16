@@ -1,7 +1,5 @@
 
-// import bookMarks from '../data/bookMarks';
-// import tags from '../data/tags';
-
+import { LOAD_DATA } from "../actions/loadData";
 import { ADD_BOOKMARK } from "../actions/addBookmark";
 import { DELETE_BOOKMARK } from "../actions/deleteBookmark";
 import { SEARCH_BOOKMARK } from "../actions/searchBookmark";
@@ -15,14 +13,15 @@ import { SAVE_BOOKMARK } from '../actions/saveBookmark';
 import { ACCESS_SAVE_BOOKMARK } from "../actions/accessSaveBookmark";
 import { VALIDEATE_FIELD } from "../actions/validateField";
 
-import { loadFromLocalStorage } from "../localStorage";
 
-const bookMarks = loadFromLocalStorage("bookmarkList"); 
-const tags = loadFromLocalStorage("tagList");
+// import bookMarks from '../data/bookMarks';
+// import tags from '../data/tags';
+// const bookMarks = loadFromLocalStorage("bookmarkList"); 
+// const tags = loadFromLocalStorage("tagList");
 
-const initialState = {
-    bookMarks,
-    tags,
+export const initialState = {
+    bookMarks: Array(0),
+    tags: Array(0),
     searchFieldValue: "",
     isModalWindowShow: false,
     addFormTitle: "Добавление новой закладки",
@@ -37,8 +36,23 @@ const initialState = {
     validationErrors: {}
 }
 
-const reducer = function(state = initialState, action) {
+export const reducer = function(state = initialState, action) {
   switch (action.type) {
+    case LOAD_DATA: {
+        let {bookMarks, tags} = action.payload;
+
+        if (bookMarks === undefined) {
+            bookMarks = [];
+        }
+        if (tags === undefined) {
+            tags = [];
+        }
+
+        return {...state,
+            bookMarks,
+            tags
+        };
+    }
     case ADD_BOOKMARK: {
         let newAddFormValues = {
             id: null,
@@ -55,6 +69,7 @@ const reducer = function(state = initialState, action) {
     }
     case EDIT_BOOKMARK: {
         let {id} = action.payload;
+
         let {caption, url, tagArray} = state.bookMarks[id];
 
         let newAddFormValues = {id, caption, url, tag: "" };
@@ -167,5 +182,3 @@ const reducer = function(state = initialState, action) {
   }
   return state;
 }
-
-export default reducer;

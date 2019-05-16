@@ -9,13 +9,18 @@ interface IProps {
 }
 
 const BookMarkList: React.FunctionComponent<IProps> = (props) => {
-      return (
-        <section className="bookmark-list">
-          {props.bookMarks.map( (item: object, index: number) => {
-            return <BookmarkItemContainer key={index} id={index} item={item} />
-          })}
-        </section>
-      )
+
+    if (props.bookMarks.length !== 0) {
+        return (
+          <section className="bookmark-list">
+            {props.bookMarks.map( (item: object, index: number) => {
+              return <BookmarkItemContainer key={index} id={index} item={item} />
+            })}
+          </section>
+        )
+     } else {
+        return <section className="bookmark-list__message">Пока нет ни одной закладки :(</section>
+     }
 }
 
 export default BookMarkList;

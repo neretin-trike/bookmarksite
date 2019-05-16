@@ -3,3 +3,8 @@
     overflow-y: auto;
 }
 
+.bookmark-list__message {
+    color: var(--font-color-varian1);
+    padding: 2.4rem;
+    font-size: 2.4rem;
+}

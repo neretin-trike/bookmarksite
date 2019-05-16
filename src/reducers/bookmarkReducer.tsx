@@ -3,7 +3,7 @@ import { SAVE_BOOKMARK } from '../actions/saveBookmark';
 import { SEARCH_BOOKMARK } from "../actions/searchBookmark";
 import { LOAD_BOOKMARKS } from "../actions/loadBookmarks";
 
-const initialState = {
+export const initialState = {
     bookMarks: Array(0),
     searchFieldValue: "",
 }
@@ -24,7 +24,7 @@ export const bookmarkReducer = function (state = initialState, action) {
             let {bookmark, id} = action.payload;
             let items = [...state.bookMarks];
     
-            let currentID = id; // ToDo: придумать способ получше
+            let currentID = id; 
             if (currentID === null) {
                 items.unshift(bookmark);
             } else {
@@ -39,7 +39,7 @@ export const bookmarkReducer = function (state = initialState, action) {
             let {id} = action.payload;
             let items = [...state.bookMarks];
             items.splice(id, 1);
-    
+
             return {...state,
                 bookMarks: items
             };

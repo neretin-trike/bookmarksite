@@ -5,7 +5,7 @@ import { SET_MODALWINDOW_STATE } from '../actions/setModalWindowState';
 import { ACCESS_SAVE_BOOKMARK } from "../actions/accessSaveBookmark";
 import { VALIDEATE_FIELD } from "../actions/validateField";
 
-const initialState = {
+export const initialState = {
     isModalWindowShow: false,
     addFormTitle: "Добавление новой закладки",
     addFormValues: {
@@ -35,7 +35,7 @@ export const modalWindowReducer = function (state = initialState, action) {
         case EDIT_BOOKMARK: {
 
             let {id, bookmark} = action.payload;
-            let {caption, url, tagArray} = bookmark;
+            let {caption, url} = bookmark;
     
             let newAddFormValues = {id, caption, url, tag: "" };
     

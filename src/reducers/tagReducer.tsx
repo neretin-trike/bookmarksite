@@ -4,7 +4,7 @@ import { ADD_NEW_TAG } from '../actions/addNewTag';
 import { MAP_TAG_ARRAY } from "../actions/mapTagArray";
 import { LOAD_TAGS } from "../actions/loadTags";
 
-const initialState = {
+export const initialState = {
     tags: Array(0),
     tagsAddForm: Array(0),
 }
@@ -54,8 +54,8 @@ export const tagReducer = function (state = initialState, action) {
             };
         }
         case MAP_TAG_ARRAY: { 
-
             let {tagArray} = action.payload;
+            
             return {...state,
                 tagsAddForm: tagArray
             };

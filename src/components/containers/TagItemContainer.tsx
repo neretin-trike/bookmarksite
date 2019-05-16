@@ -36,8 +36,9 @@ interface IStateProps {
   tagsAddForm: Array<number>
 }
 function mapStateToProps(state) {
+  let {tagsAddForm} = state.tagState;
   return {
-      tagsAddForm: state.tagsAddForm as Array<number>
+      tagsAddForm: tagsAddForm as Array<number>
   };
 }
 

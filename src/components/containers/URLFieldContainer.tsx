@@ -72,9 +72,11 @@ interface IStateProps {
 }
 
 function mapStateToProps(state) {
+  let {addFormValues, validationErrors} = state.modalWindowState;
+
   return {
-    urlValue: state.addFormValues.url as string,
-    validationErrors: state.validationErrors as string
+    urlValue: addFormValues.url as string,
+    validationErrors: validationErrors as string
   };
 }
 

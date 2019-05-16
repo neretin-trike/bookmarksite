@@ -7,8 +7,10 @@ interface IStateProps {
 }
 
 function mapStateToProps(state) {
+  let {validationErrors} = state.modalWindowState;
+
   return {
-    error: state.validationErrors as string
+    error: validationErrors as string
   };
 }
 

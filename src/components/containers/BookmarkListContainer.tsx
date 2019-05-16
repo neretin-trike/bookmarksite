@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 
 import BookmarkList from '../views/BookmarkList';
-import { doLoadData } from '../../actions/loadData';
 import { loadFromLocalStorage } from '../../localStorage';
+import { doLoadBookmarks } from '../../actions/loadBookmarks';
+import { doLoadTags } from '../../actions/loadTags';
 
 const BookmarkListContainer: React.FunctionComponent<any> = (props) => {
 
@@ -11,7 +12,7 @@ const BookmarkListContainer: React.FunctionComponent<any> = (props) => {
         const bookMarks = loadFromLocalStorage("bookmarkList"); 
         const tags = loadFromLocalStorage("tagList");
 
-        props.loadData( {bookMarks, tags});
+        props.loadData({bookMarks, tags});
     }, []) 
 
     return <BookmarkList bookMarks={props.bookMarks} />
@@ -22,14 +23,14 @@ interface IDispatchProps {
   }
   
 interface IStateProps {
-    // bookMarks: Array<any>,
+    bookMarks: any,
 }
 
 function mapStateToProps(state) {
-    const {bookMarks, searchFieldValue, tags} = state;
+    const {tags} = state.tagState;
+    const {bookMarks, searchFieldValue} = state.bookmarkState;
 
     let result = undefined;
-
     try {
         result = bookMarks.filter( (item) => {
             let answer = item.caption.includes(searchFieldValue) || 
@@ -47,8 +48,9 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = function(dispatch, _ownProps) {
     return {
-      loadData: function (data) {
-        dispatch(doLoadData(data));
+      loadData: function ({bookMarks, tags}) {
+        dispatch(doLoadBookmarks(bookMarks));
+        dispatch(doLoadTags(tags));
       }
     }
 }

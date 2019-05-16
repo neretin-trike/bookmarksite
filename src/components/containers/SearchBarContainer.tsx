@@ -22,8 +22,9 @@ interface IDispatchProps {
 }
 
 function mapStateToProps(state) {
+    let {searchFieldValue} = state.bookmarkState;
     return {
-        searchFieldValue: state.searchFieldValue as string
+        searchFieldValue: searchFieldValue as string
     };
 }
 

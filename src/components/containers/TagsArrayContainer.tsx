@@ -18,8 +18,9 @@ interface IStateProps {
     tags: Array<any>,
 }
 function mapStateToProps(state) {
+  let {tags} = state.tagState;
     return {
-        tags: state.tags as Array<any>,
+        tags: tags as Array<any>,
     };
 }
 export default connect<IStateProps>(mapStateToProps)(TagsArrayContainer);

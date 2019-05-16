@@ -25,10 +25,12 @@ interface IDispatchProps {
 }
 
 function mapStateToProps(state) {
+  let {addFormValues, addFormSaveButton} = state.modalWindowState;
+  let {tagsAddForm} = state.tagState;
   return {
-    addFormValues: state.addFormValues as object,
-    tagsAddForm: state.tagsAddForm as Array<number>,
-    addFormSaveButton: state.addFormSaveButton as boolean
+    tagsAddForm: tagsAddForm as Array<number>,
+    addFormValues: addFormValues as object,
+    addFormSaveButton: addFormSaveButton as boolean
   };
 }
 
@@ -53,7 +55,7 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
       let {time, date} = getFormattedDate();
 
       let newBookmark = {
-        faviconPath: `https://www.google.com/s2/favicons?domain=${formValues.url}`, // берёт ссылку на фавиконы из индексированных сайтов
+        faviconPath: `https://www.google.com/s2/favicons?domain=${formValues.url}`, // берёт ссылку на фавиконы из индексированных гуглом сайтов
         caption: formValues.caption,
         url: formValues.url,
         createDate: `${time} ${date}`,
@@ -64,7 +66,10 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
         addFormTitle: "Редактировать запись",
         isModalWindowShow: false
       }));
-      dispatch(doSaveBookmark(newBookmark));
+      dispatch(doSaveBookmark({
+        id: formValues.id,
+        bookmark: newBookmark
+      }));
     }
   }
 }

@@ -148,11 +148,14 @@ interface IStateProps {
   validationErrors: string
 }
 function mapStateToProps(state) {
+  let {tags, tagsAddForm} = state.tagState;
+  let {addFormValues, validationErrors} = state.modalWindowState;
+  
   return {
-      tags: state.tags as Array<any>,
-      tagValue: state.addFormValues.tag as string,
-      tagsAddForm: state.tagsAddForm as Array<number>,
-      validationErrors: state.validationErrors as string
+      tags: tags as Array<any>,
+      tagsAddForm: tagsAddForm as Array<number>,
+      tagValue: addFormValues.tag as string,
+      validationErrors: validationErrors as string
   };
 }
 

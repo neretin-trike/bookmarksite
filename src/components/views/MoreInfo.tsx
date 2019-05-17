@@ -4,8 +4,17 @@ import TagsArrayContainer from '../containers/TagsArrayContainer';
 
 import '../../styles/more-info.css'
 
-const MoreInfo: React.FunctionComponent<any> = function (props) {
+interface IProps {
+    data: {
+        url: string,
+        createDate: string,
+        tagArray: number[]
+    }
+}
+
+const MoreInfo: React.FunctionComponent<IProps> = function (props) {
     let {url, createDate, tagArray} = props.data; 
+
     return (
         <section className="more-info">
             <div className="more-info__detail" >

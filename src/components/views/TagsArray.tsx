@@ -6,12 +6,12 @@ import '../../styles/tags-array.css'
 interface IProps {
     array: Array<any>,
     tags: Array<any>,
-    // readonly: boolean
 }
 
 class TagsArray extends React.PureComponent<IProps> {
     render() {
         let {array, tags} = this.props;
+
         return (
             <div className="tags-array">
                 {array && array.map( (item: number, index: number) => {

@@ -9,7 +9,6 @@ interface IProps {
 }
 
 const BookMarkList: React.FunctionComponent<IProps> = (props) => {
-    console.log(props.bookMarks);
     if (props.bookMarks.length !== 0) {
         return (
           <section className="bookmark-list">

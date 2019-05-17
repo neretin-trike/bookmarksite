@@ -12,10 +12,10 @@ interface IStateProps {
   addFormTitle: string
 }
 function mapStateToProps(state) {
-  let {addFormValues, isModalWindowShow} = state.modalWindowState;
+  let {isModalWindowShow, addFormTitle} = state.modalWindowState;
   return {
     isModalWindowShow: isModalWindowShow as boolean,
-    addFormTitle: addFormValues.addFormTitle as string,
+    addFormTitle: addFormTitle as string,
   };
 }
 

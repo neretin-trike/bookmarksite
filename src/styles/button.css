@@ -14,7 +14,7 @@
 }
 
 .button_theme_add:hover {
-    color: var(--font-main-color);
+    color: var(--primary-color);
     background-color: var(--main-color);
 }
 
@@ -38,7 +38,7 @@
 .button_theme_plus:disabled,
 .button_theme_plus:disabled:hover {
     cursor: default;
-    color: var(--font-color-varian2);
+    color: var(--secondary-color);
 }
 
 .button_theme_modal {
@@ -49,7 +49,7 @@
 .button_theme_modal:disabled,
 .button_theme_modal:disabled:hover {
     cursor: default;
-    color: var(--font-color-varian2);
+    color: var(--secondary-color);
 }
 
 .button_theme_interact:hover,  

@@ -16,7 +16,7 @@
     caret-color: var(--font-color-primary);
 }
 
-.input_theme_modal::-webkit-input-placeholder {color: var(--font-color-varian2); font-family: "Roboto"; font-style: italic}
-.input_theme_modal::-moz-placeholder          {color: var(--font-color-varian2); font-family: "Roboto"; font-style: italic}
-.input_theme_modal:-moz-placeholder           {color: var(--font-color-varian2); font-family: "Roboto"; font-style: italic}
-.input_theme_modal:-ms-input-placeholder      {color: var(--font-color-varian2); font-family: "Roboto"; font-style: italic}
+.input_theme_modal::-webkit-input-placeholder {color: var(--secondary-color); font-family: "Roboto"; font-style: italic}
+.input_theme_modal::-moz-placeholder          {color: var(--secondary-color); font-family: "Roboto"; font-style: italic}
+.input_theme_modal:-moz-placeholder           {color: var(--secondary-color); font-family: "Roboto"; font-style: italic}
+.input_theme_modal:-ms-input-placeholder      {color: var(--secondary-color); font-family: "Roboto"; font-style: italic}

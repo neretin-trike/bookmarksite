@@ -14,7 +14,7 @@
 }
 
 .tag-item__name {
-    color: var(--font-color-primary);
+    color: var(--primary-color);
 }
 
 .tag-item__button {
@@ -33,5 +33,5 @@
 
     background: transparent;
 
-    color: var(--font-color-primary);
+    color: var(--primary-color);
 }

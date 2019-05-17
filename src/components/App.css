@@ -51,7 +51,7 @@
 -------------------------------*/
 
 :root {
-  /* --primary-color: white;
+  --primary-color: white;
   --secondary-color: lightgray;
 
   --main-color: #c91450;
@@ -59,12 +59,12 @@
   --font-color-primary: #3f3746;
   --font-color-secondary: #3f3746;
 
-  --modal-color: lightgray;
+  --modal-color: #f0f0f0;
 
   --font-color-varian1: #664455;
-  --font-color-varian2: #60505d; */
+  --font-color-varian2: #60505d;
 
-  --primary-color: #201b2d;
+  /* --primary-color: #201b2d;
   --secondary-color: #3a1323;
 
   --main-color: #c91450;
@@ -75,7 +75,7 @@
   --modal-color: #30283e;
 
   --font-color-varian1: #664455;
-  --font-color-varian2: #60505d;
+  --font-color-varian2: #60505d; */
 }
 
 /*-------------------------------

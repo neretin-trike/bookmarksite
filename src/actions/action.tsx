@@ -3,6 +3,6 @@ interface IAction<T> {
     payload: T;
     error?: boolean;
     meta?: any;
-  }
+}
   
-  export default IAction;
+export default IAction;

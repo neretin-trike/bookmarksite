@@ -4,22 +4,23 @@ import { connect } from 'react-redux';
 import Button from '../views/Button';
 import { doDeleteBookmark } from '../../actions/deleteBookmark';
 
-class DeleteButtonContainer extends React.Component<any> {
-  render() {
-    return <Button theme="button_theme_interact" name="удалить" clickHandle={() => this.props.deleteBookmark(this.props.id)}/>
-  }
+const DeleteButtonContainer: React.FunctionComponent<any> = (props) => {
+    return <Button
+      theme="button_theme_interact"
+      name="удалить"
+      clickHandle={() => props.deleteBookmark(props.id)} />
 }
 
 interface IDispatchProps {
   deleteBookmark(id: number)
 }
 
-const mapDispatchToProps = function(dispatch, _ownProps) {
+const mapDispatchToProps = (dispatch, _ownProps) => {
   return {
     deleteBookmark: function (id) {
-      dispatch(doDeleteBookmark({id}));
+      dispatch(doDeleteBookmark({ id }));
     }
   }
 }
 
-export default connect<any,IDispatchProps>(null,mapDispatchToProps)(DeleteButtonContainer);
+export default connect<any, IDispatchProps>(null, mapDispatchToProps)(DeleteButtonContainer);

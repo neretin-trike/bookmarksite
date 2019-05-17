@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import BookmarkItemContainer from '../containers/BookmarkItemContainer';
+import BookmarkItemContainer from "../containers/BookmarkItemContainer";
 
-import '../../styles/bookmark-list.css';
+import "../../styles/bookmark-list.css";
 
 interface IProps {
     bookMarks: Array<any>,

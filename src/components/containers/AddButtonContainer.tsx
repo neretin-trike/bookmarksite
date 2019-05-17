@@ -1,23 +1,21 @@
-import React from 'react';
+import React from "react";
 import { connect } from "react-redux";
 
-import Button from '../views/Button';
-import { doAddBookmark } from '../../actions/addBookmark';
-import { doSetModalWindowState } from '../../actions/setModalWindowState';
+import Button from "../views/Button";
+import { doAddBookmark } from "../../actions/addBookmark";
+import { doSetModalWindowState } from "../../actions/setModalWindowState";
 
-export class AddButtonContainer extends React.Component<any> {
-  render() {
-    return <Button 
-            theme="button_theme_add header-layout__button" 
-            name="Добавить закладку" 
-            clickHandle={this.props.addBookmark}/>
-  }
+const AddButtonContainer: React.FunctionComponent<any> = (props) => {
+  return <Button
+    theme="button_theme_add header-layout__button"
+    name="Добавить закладку"
+    clickHandle={props.addBookmark} />
 }
 
 interface IDispatchProps {
-  addBookmark(any)
+  addBookmark()
 }
-const mapDispatchToProps = function(dispatch, _ownProps) {
+const mapDispatchToProps = (dispatch, _ownProps) => {
   return {
     addBookmark: function () {
       dispatch(doSetModalWindowState({
@@ -29,4 +27,4 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
   }
 }
 
-export default connect<any,IDispatchProps>(null,mapDispatchToProps)(AddButtonContainer);
+export default connect<any, IDispatchProps>(null, mapDispatchToProps)(AddButtonContainer);

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import '../../styles/button.css'
+import "../../styles/button.css"
 
 interface IProps {
     clickHandle(any?): void,
@@ -10,18 +10,18 @@ interface IProps {
     theme?: string
 }
 
-class Button extends React.PureComponent<IProps> {
-    render() {
-        return (
-            <button 
-                disabled={this.props.disabled} 
-                className={`button ${this.props.theme}`} 
-                onClick={this.props.clickHandle}
-                title={this.props.title}>
-                    {this.props.name}
-            </button> 
-        )
-    }
-} 
+const Button: React.FunctionComponent<IProps> = (props) => {
+    let {disabled, theme, clickHandle, title, name} = props;
+
+    return (
+        <button
+            disabled={disabled}
+            className={`button ${theme}`}
+            onClick={clickHandle}
+            title={title}>
+                {name}
+        </button>
+    )
+}
 
 export default Button;

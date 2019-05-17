@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import Favicon from './Favicon';
-import Caption from './Caption';
-import InteractLayout from '../layouts/InteractLayout';
-import DeleteButtonContainer from '../containers/DeleteButtonContainer';
-import EditButtonContainer from '../containers/EditButtonContainer';
-import ToggleButtonContainer from '../containers/ToggleButtonContainer';
+import Favicon from "./Favicon";
+import Caption from "./Caption";
+import InteractLayout from "../layouts/InteractLayout";
+import DeleteButtonContainer from "../containers/DeleteButtonContainer";
+import EditButtonContainer from "../containers/EditButtonContainer";
+import ToggleButtonContainer from "../containers/ToggleButtonContainer";
 
-import '../../styles/bookmark-item.css'
+import "../../styles/bookmark-item.css"
 
 interface IProps {
     item: {

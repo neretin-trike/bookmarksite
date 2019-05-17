@@ -1,10 +1,11 @@
 import React from "react";
 
-import '../../styles/hint.css';
+import "../../styles/hint.css";
 
 interface IProps {
     error: any
 }
+
 const Hint: React.FunctionComponent<IProps> = (props) => {
     const items = Array(0);
     for (let key in props.error) {
@@ -12,12 +13,10 @@ const Hint: React.FunctionComponent<IProps> = (props) => {
             items.push(<li className="hint__item" key={key}>{props.error[key]}</li>)
         }
     }
+    return <ul className="hint">
+        {items}
+    </ul>
 
-    return (
-        <ul className="hint">
-            {items}
-        </ul>
-    )
 }
 
 export default Hint;

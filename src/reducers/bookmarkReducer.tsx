@@ -16,37 +16,41 @@ export const bookmarkReducer = function (state = initialState, action) {
                 bookMarks = [];
             }
 
-            return {...state,
+            return {
+                ...state,
                 bookMarks
             };
         }
         case SAVE_BOOKMARK: {
-            let {bookmark, id} = action.payload;
+            let { bookmark, id } = action.payload;
             let items = [...state.bookMarks];
-    
-            let currentID = id; 
+
+            let currentID = id;
             if (currentID === null) {
                 items.unshift(bookmark);
             } else {
                 items[currentID] = bookmark
             }
-            
-            return {...state,
+
+            return {
+                ...state,
                 bookMarks: items
             };
         }
         case DELETE_BOOKMARK: {
-            let {id} = action.payload;
+            let { id } = action.payload;
             let items = [...state.bookMarks];
             items.splice(id, 1);
 
-            return {...state,
+            return {
+                ...state,
                 bookMarks: items
             };
         }
         case SEARCH_BOOKMARK: {
-            let {value} = action.payload;
-            return {...state,
+            let { value } = action.payload;
+            return {
+                ...state,
                 searchFieldValue: value,
             };
         }

@@ -1,9 +1,8 @@
+import React from "react"
+import MoreInfo from "../../src/components/views/MoreInfo"
+import { shallow } from "enzyme"
 
-import React from 'react'
-import MoreInfo from '../../src/components/views/MoreInfo'
-import { shallow } from 'enzyme'
-
-describe('+++ MoreInfo --- Shallow Render React VIEW Component +++',()=>{
+describe("+++ MoreInfo --- Shallow Render React VIEW Component +++",()=>{
     const testData = {
         url: "",
         createDate: "",
@@ -15,17 +14,17 @@ describe('+++ MoreInfo --- Shallow Render React VIEW Component +++',()=>{
         wrapper = shallow(<MoreInfo data={testData}/>);
     })
 
-    it('+++ Render the VIEW component', () => {
+    it("+++ Render the VIEW component", () => {
        expect(wrapper).toHaveLength(1)
     });
 
-    it('+++ Contains URL contain url', () => {
+    it("+++ Contains URL contain url", () => {
         let url = `URL: ${testData.url}`;
-        expect(wrapper.find('div .more-info__caption').text()).toEqual(url);
+        expect(wrapper.find("div .more-info__caption").text()).toEqual(url);
     });
 
-    it('+++ Contains TIME contain url', () => {
+    it("+++ Contains TIME contain url", () => {
         let createDate = `Дата создания: ${testData.createDate}`;
-        expect(wrapper.find('time .more-info__caption').text()).toEqual(createDate);
+        expect(wrapper.find("time .more-info__caption").text()).toEqual(createDate);
     });
 });

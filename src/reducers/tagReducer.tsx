@@ -12,35 +12,38 @@ export const tagReducer = function (state = initialState, action) {
     switch (action.type) {
         case LOAD_TAGS: {
             let tags = action.payload;
-    
+
             if (tags === undefined) {
                 tags = [];
             }
-    
-            return {...state,
+
+            return {
+                ...state,
                 tags
             };
         }
         case ADD_TAG: {
-            let {id} = action.payload;
+            let { id } = action.payload;
             let items = [...state.tagsAddForm];
-    
+
             if (id === -1) {
-                id = state.tags.length-1;
+                id = state.tags.length - 1;
             }
-    
+
             items.push(id);
-    
-            return {...state,
+
+            return {
+                ...state,
                 tagsAddForm: items
             };
         }
         case DELETE_TAG: {
-            let {id} = action.payload;
+            let { id } = action.payload;
             let items = [...state.tagsAddForm];
             items.splice(id, 1);
-    
-            return {...state,
+
+            return {
+                ...state,
                 tagsAddForm: items
             };
         }
@@ -48,18 +51,20 @@ export const tagReducer = function (state = initialState, action) {
             let newTag = action.payload;
             let items = [...state.tags];
             items.push(newTag);
-    
-            return {...state,
+
+            return {
+                ...state,
                 tags: items
             };
         }
-        case MAP_TAG_ARRAY: { 
-            let {tagArray} = action.payload;
-            
-            return {...state,
+        case MAP_TAG_ARRAY: {
+            let { tagArray } = action.payload;
+
+            return {
+                ...state,
                 tagsAddForm: tagArray
             };
         }
     }
-    return state; 
+    return state;
 }

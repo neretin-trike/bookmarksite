@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import '../../styles/logo.css'
+import "../../styles/logo.css"
 
-const Logo: React.FunctionComponent<any> = function (props) {
+const Logo: React.FunctionComponent<any> = (props) => {
     return (
         <div className="logo">
             <h1 className="logo__title">Сайт <span className="logo__subtitle">закладок</span></h1>

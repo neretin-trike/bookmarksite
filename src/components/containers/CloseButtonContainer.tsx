@@ -1,22 +1,23 @@
-import React from 'react';
+import React from "react";
 import { connect } from "react-redux";
 
-import Button from '../views/Button';
-import { doSetModalWindowState, SET_MODALWINDOW_STATE } from '../../actions/setModalWindowState';
+import Button from "../views/Button";
+import { doSetModalWindowState } from "../../actions/setModalWindowState";
 
-class CloseButtonContainer extends React.Component<any> {
-  render() {
-    return <Button name="Закрыть" theme="button_theme_modal" clickHandle={this.props.closeModalWindow}/>
-  }
+const CloseButtonContainer: React.FunctionComponent<any> = (props) => {
+  return <Button
+    name="Закрыть"
+    theme="button_theme_modal"
+    clickHandle={props.closeModalWindow} />
 }
 
 interface IDispatchProps {
-  closeModalWindow(id: number)
+  closeModalWindow()
 }
 
-const mapDispatchToProps = function(dispatch, _ownProps) {
+const mapDispatchToProps = (dispatch, _ownProps) => {
   return {
-    closeModalWindow: function (id) {
+    closeModalWindow: function () {
       dispatch(doSetModalWindowState({
         addFormTitle: "Редактирование записи",
         isModalWindowShow: false
@@ -25,4 +26,4 @@ const mapDispatchToProps = function(dispatch, _ownProps) {
   }
 }
 
-export default connect<any,IDispatchProps>(null,mapDispatchToProps)(CloseButtonContainer);
+export default connect<any, IDispatchProps>(null, mapDispatchToProps)(CloseButtonContainer);

@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import Hint from '../views/Hint';
+import Hint from "../views/Hint";
 
 interface IStateProps {
   error: string
 }
 
-function mapStateToProps(state) {
-  let {validationErrors} = state.modalWindowState;
+const mapStateToProps = (state) => {
+  let { validationErrors } = state.modalWindowState;
 
   return {
     error: validationErrors as string

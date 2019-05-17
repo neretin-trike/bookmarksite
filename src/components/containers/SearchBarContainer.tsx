@@ -1,17 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import SearchBar from '../views/SearchBar';
-import { doSearchBookmark } from '../../actions/searchBookmark';
+import SearchBar from "../views/SearchBar";
+import { doSearchBookmark } from "../../actions/searchBookmark";
 
-class SearchBarContainer extends React.Component<any> {
-    render() {
-        return (
-            <SearchBar 
-                value={this.props.searchFieldValue} 
-                changeHandle={this.props.searchBookmark} />
-        )
-    }
+const SearchBarContainer: React.FunctionComponent<any> = (props) => {
+    let { searchFieldValue, searchBookmark } = props;
+    return <SearchBar
+        value={searchFieldValue}
+        changeHandle={searchBookmark} />
 }
 
 interface IStateProps {
@@ -21,27 +18,27 @@ interface IDispatchProps {
     searchBookmark(any)
 }
 
-function mapStateToProps(state) {
-    let {searchFieldValue} = state.bookmarkState;
+const mapStateToProps = (state) => {
+    let { searchFieldValue } = state.bookmarkState;
     return {
         searchFieldValue: searchFieldValue as string
     };
 }
-
-const mapDispatchToProps = function(dispatch, _ownProps) {
+const mapDispatchToProps = (dispatch, _ownProps) => {
     return {
         searchBookmark: function (event) {
             const target = event.target;
-            let {value} = target;
+            let { value } = target;
 
+            // простая валидация для формы поиска
             if (value.length >= 256) {
-                alert("Ошибка: Превышено допустимое количество символов. Максимум: "+256);
+                alert("Ошибка: Превышено допустимое количество символов. Максимум: " + 256);
                 return;
             }
 
-            dispatch(doSearchBookmark({value}));
+            dispatch(doSearchBookmark({ value }));
         }
     }
 }
-  
-  export default connect<IStateProps,IDispatchProps>(mapStateToProps,mapDispatchToProps)(SearchBarContainer);
+
+export default connect<IStateProps, IDispatchProps>(mapStateToProps, mapDispatchToProps)(SearchBarContainer);
